@@ -49,7 +49,7 @@ const Header = () => {
             className="md:hidden text-jet/70 hover:text-jet transition-colors"
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <Menu size={24} />
           </button>
         </div>
       </div>
