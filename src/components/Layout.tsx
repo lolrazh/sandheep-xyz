@@ -10,11 +10,11 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const socialLinks = [
-    { icon: Mail, url: 'mailto:contact@example.com', label: 'Email' },
-    { icon: Linkedin, url: 'https://linkedin.com/in/example', label: 'LinkedIn' },
-    { icon: Github, url: 'https://github.com/example', label: 'GitHub' },
-    { icon: Twitter, url: 'https://twitter.com/example', label: 'X' },
-    { icon: Instagram, url: 'https://instagram.com/example', label: 'Instagram' },
+    { icon: Mail, url: 'mailto:rajkumar.sandheep@gmail.com', label: 'Email' },
+    { icon: Linkedin, url: 'https://linkedin.com/in/sandheeprajkumar', label: 'LinkedIn' },
+    { icon: Github, url: 'https://github.com/lolrazh', label: 'GitHub' },
+    { icon: Twitter, url: 'https://x.com/sheeshlordsandy', label: 'X' },
+    { icon: Instagram, url: 'https://instagram.com/lolrazh', label: 'Instagram' },
   ];
 
   return (
