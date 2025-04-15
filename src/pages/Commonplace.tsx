@@ -25,6 +25,14 @@ const links: Link[] = [
     url: "https://www.lesswrong.com/s/NBDFAKt3GbFwnwzQF"
   },
   {
+    title: "Inside Einstein's Mind",
+    url: "https://www.youtube.com/watch?v=7CZyDPELXs4&ab_channel=PBSAmerica"
+  },
+  {
+    title: "Intro to Special Relativity",
+    url: "https://youtube.com/playlist?list=PLoaVOjvkzQtyjhV55wZcdicAz5KexgKvm&si=WBopx4bzVDecpLrB"
+  },
+  {
     title: "The Darthmouth Scar Experiment",
     url: "https://www.psychologytoday.com/us/blog/beyond-school-walls/202410/invisible-scars"
   },
