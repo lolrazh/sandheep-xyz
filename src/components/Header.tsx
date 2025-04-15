@@ -23,7 +23,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="py-6 px-4 border-b border-jet/10">
+    <header className="py-6 px-2 md:px-4 border-b border-jet/10">
       <div className="container mx-auto max-w-4xl">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
