@@ -1,6 +1,7 @@
 
 import React from 'react';
 import ArticleCard, { Article } from './ArticleCard';
+import { Separator } from './ui/separator';
 
 interface YearSectionProps {
   year: number;
@@ -9,14 +10,19 @@ interface YearSectionProps {
 
 const YearSection: React.FC<YearSectionProps> = ({ year, articles }) => {
   return (
-    <section>
-      <div className="year-divider">
-        <span className="font-lexend font-light text-3xl px-4">{year}</span>
-      </div>
-      <div className="mt-10">
-        {articles.map((article) => (
-          <ArticleCard key={article.id} article={article} />
-        ))}
+    <section className="mb-12">
+      <div className="grid grid-cols-[5rem_1fr] gap-4">
+        <div className="text-jet/60 text-xl font-lexend font-light">
+          {year}
+        </div>
+        <div>
+          {articles.map((article, index) => (
+            <React.Fragment key={article.id}>
+              <ArticleCard article={article} />
+              {index < articles.length - 1 && <Separator className="my-6" />}
+            </React.Fragment>
+          ))}
+        </div>
       </div>
     </section>
   );

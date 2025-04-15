@@ -6,11 +6,11 @@ import { getArticlesByYear } from '../data/articles';
 
 const Index = () => {
   const articlesByYear = getArticlesByYear();
-  const years = Array.from(articlesByYear.keys());
+  const years = Array.from(articlesByYear.keys()).sort((a, b) => b - a); // Sort years in descending order
 
   return (
     <Layout>
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-3xl py-10">
         {years.map(year => (
           <YearSection 
             key={year} 
