@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from './Header';
 import { Instagram, Linkedin, Github, Twitter, Mail } from 'lucide-react';
@@ -18,13 +17,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-linen relative">
+    <div className="min-h-screen bg-linen relative flex flex-col">
       <div className="film-grain"></div>
       <Header />
-      <main className="container mx-auto max-w-4xl px-4 pb-20">
+      <main className="container mx-auto max-w-4xl px-4 pb-12 flex-1">
         {children}
       </main>
-      <footer className="container mx-auto max-w-4xl px-4 py-10 border-t border-jet/10 mt-10">
+      <footer className="container mx-auto max-w-4xl px-4 py-8 border-t border-jet/10">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="font-lexend text-xs uppercase tracking-wider text-jet/50 mb-3 md:mb-0">
             © {new Date().getFullYear()} Sandheep Rajkumar
