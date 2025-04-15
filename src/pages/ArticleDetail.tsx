@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import { getArticleById } from '../data/articles';
 import { getArticleContent } from '../utils/markdown';
 import ReactMarkdown from 'react-markdown';
+import { Separator } from "@/components/ui/separator";
 
 const ArticleDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -31,14 +32,17 @@ const ArticleDetail = () => {
   return (
     <Layout>
       <article className="mx-auto max-w-3xl px-4">
-        <div className="mb-4 mt-8">
-          <span className="font-lexend text-sm uppercase tracking-wider text-jet/60">
-            {article.fullDate}
-          </span>
+        <div className="mt-8">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">{article.title}</h1>
+          <div className="mb-6">
+            <span className="font-lexend text-sm uppercase tracking-wider text-jet/60">
+              SANDHEEP RAJKUMAR | {article.fullDate}
+            </span>
+          </div>
+          <Separator className="bg-jet/20 mb-12" />
         </div>
-        <h1 className="text-3xl md:text-4xl font-bold mb-8">{article.title}</h1>
         
-        <div className="prose prose-lg prose-slate mx-auto [&>p]:text-xl [&>p]:leading-relaxed [&>p]:mb-6 [&>p]:whitespace-pre-line">
+        <div className="prose prose-lg prose-slate mx-auto [&>p]:text-lg [&>p]:leading-relaxed [&>p]:mb-6 [&>p]:whitespace-pre-line">
           <ReactMarkdown>{content}</ReactMarkdown>
         </div>
         
