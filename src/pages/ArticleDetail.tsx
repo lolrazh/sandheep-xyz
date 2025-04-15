@@ -2,13 +2,16 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { getArticleById } from '../data/articles';
+import { getArticleContent } from '../utils/markdown';
+import ReactMarkdown from 'react-markdown';
 
 const ArticleDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const article = getArticleById(id || "");
+  const content = id ? getArticleContent(id) : undefined;
 
-  if (!article) {
+  if (!article || !content) {
     return (
       <Layout>
         <div className="text-center py-20">
@@ -35,9 +38,8 @@ const ArticleDetail = () => {
         </div>
         <h1 className="text-4xl md:text-5xl font-bold mb-6">{article.title}</h1>
         
-        {/* Content will be loaded from markdown files */}
         <div className="prose prose-lg prose-slate mx-auto">
-          {/* Content loading logic will be added here */}
+          <ReactMarkdown>{content}</ReactMarkdown>
         </div>
         
         <div className="mt-12 pt-6 border-t border-jet/10">
