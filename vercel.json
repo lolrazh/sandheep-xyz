@@ -3,6 +3,12 @@
       "env": {
         "BUN_INSTALL": "true"
       }
-    }
+    },
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/index.html"
+      }
+    ]
   }
   
