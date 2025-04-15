@@ -1,12 +1,11 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 export interface Article {
   id: string;
   title: string;
-  excerpt: string;
   date: string;
+  fullDate: string;
   year: number;
 }
 

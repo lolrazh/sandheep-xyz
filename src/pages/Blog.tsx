@@ -2,57 +2,24 @@ import React from 'react';
 import Layout from '../components/Layout';
 import { Link } from 'react-router-dom'; // Import Link for internal navigation
 import { Separator } from "@/components/ui/separator"; // Import Separator
+import { articles } from '../data/articles';
 
 const Blog = () => {
-  // Updated hardcoded article data, including the new one
-  const articles = [
-    {
-      id: "ai-cad-lamp", // Example slug ID
-      title: "AI-Powered CAD And The Electric Lamp Problem",
-      date: "Feb 6", // Shortened date format for display
-      fullDate: "February 6, 2025", // Keep full date if needed later
-      year: 2025
-    },
-    {
-      id: "sunk-cost",
-      title: "The Sunk Cost Fallacy",
-      date: "Sep 21",
-      fullDate: "September 21, 2024",
-      year: 2024
-    },
-    {
-      id: "how-you-do",
-      title: "How You Do Something Is How You Do Everything",
-      date: "Sep 15",
-      fullDate: "September 15, 2024",
-      year: 2024
-    },
-    {
-      id: "notes-on-curiosity", // Added new article
-      title: "Notes on Curiosity",
-      date: "Apr 15",
-      fullDate: "April 15, 2025",
-      year: 2025
-    },
-  ];
-
   // Group articles by year
   const articlesByYear = articles.reduce((acc, article) => {
     const year = article.year;
     if (!acc[year]) {
       acc[year] = [];
     }
-    // Just push articles into the year's array
-    acc[year].push(article); 
+    acc[year].push(article);
     return acc;
   }, {});
 
   // Get sorted years (descending)
   const sortedYears = Object.keys(articlesByYear).map(Number).sort((a, b) => b - a);
 
-  // Helper function to parse date for sorting (e.g., "Sep 21", 2024 -> Date object)
-  const parseDate = (dateStr, year) => {
-    // Simple parsing assuming "Mmm DD" format. Adjust if format varies.
+  // Helper function to parse date for sorting (e.g., "Feb 6", 2025 -> Date object)
+  const parseDate = (dateStr: string, year: number) => {
     return new Date(`${dateStr} ${year}`);
   };
 
