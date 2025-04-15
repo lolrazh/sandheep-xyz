@@ -6,13 +6,19 @@ export interface ArticleWithContent extends Article {
 }
 
 // Import all markdown files
-const articleContents: Record<string, { default: string }> = {
-  electriclamp: await import('../../content/articles/electriclamp.md?raw'),
-  sunkcostfallacy: await import('../../content/articles/sunkcostfallacy.md?raw'),
-  howyoudosomething: await import('../../content/articles/howyoudosomething.md?raw'),
-  curiosity: await import('../../content/articles/curiosity.md?raw'),
+const articleContents: Record<string, Promise<{ default: string }>> = {
+  electriclamp: import('../../content/articles/electriclamp.md?raw'),
+  sunkcostfallacy: import('../../content/articles/sunkcostfallacy.md?raw'),
+  howyoudosomething: import('../../content/articles/howyoudosomething.md?raw'),
+  curiosity: import('../../content/articles/curiosity.md?raw'),
 };
 
-export const getArticleContent = (id: string): string | undefined => {
-  return articleContents[id]?.default;
+export const getArticleContent = async (id: string): Promise<string | undefined> => {
+  try {
+    const content = await articleContents[id];
+    return content?.default;
+  } catch (error) {
+    console.error(`Error loading article content for ${id}:`, error);
+    return undefined;
+  }
 }; 
