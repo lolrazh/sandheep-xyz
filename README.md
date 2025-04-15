@@ -1,73 +1,59 @@
-# Welcome to your Lovable project
+# sandheep.xyz
 
-## Project info
+My personal website built with React, Vite, and TailwindCSS. Feel free to use this as a template for your own site.
 
-**URL**: https://lovable.dev/projects/7079f9f1-bb2d-43e9-9b18-f9e04c8bf49f
+## Features
 
-## How can I edit this code?
+- Markdown-based blog posts with dynamic imports
+- Commonplace book for sharing interesting links
+- Clean, minimalist design with subtle animations
+- Fully responsive layout
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Bun](https://bun.sh/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7079f9f1-bb2d-43e9-9b18-f9e04c8bf49f) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+1. Clone the repository:
+```bash
+git clone https://github.com/lolrazh/sandheep-xyz.git
+cd sandheep-xyz
 ```
 
-**Edit a file directly in GitHub**
+2. Install dependencies:
+```bash
+bun install
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+3. Start the development server:
+```bash
+bun dev
+```
 
-**Use GitHub Codespaces**
+4. Open [http://localhost:8080](http://localhost:8080) to view it in your browser.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project Structure
 
-## What technologies are used for this project?
+```
+sandheep-xyz/
+├── content/        # Markdown content for blog posts
+├── public/         # Static files
+└── src/
+    ├── components/ # React components
+    ├── pages/      # Page components
+    ├── utils/      # Utility functions
+    └── data/       # Data files
+```
 
-This project is built with:
+## Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The site is deployed on Vercel. To deploy your own:
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/7079f9f1-bb2d-43e9-9b18-f9e04c8bf49f) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+1. Fork this repository
+2. Import your fork to Vercel
+3. Deploy
