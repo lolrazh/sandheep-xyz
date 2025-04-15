@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -15,7 +14,7 @@ const Header = () => {
             </Link>
           </div>
           <div className="flex items-center space-x-6 font-lexend text-sm uppercase tracking-wider">
-            <Link to="/" className="article-link">Blog</Link>
+            <Link to="/blog" className="article-link">Blog</Link>
             <Link to="/links" className="article-link">Links</Link>
             <Link to="/commonplace" className="article-link">Commonplace</Link>
             <Link to="/about" className="article-link">About</Link>

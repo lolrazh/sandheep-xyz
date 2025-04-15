@@ -4,59 +4,36 @@ import { Link } from 'react-router-dom'; // Import Link for internal navigation
 import { Separator } from "@/components/ui/separator"; // Import Separator
 
 const Blog = () => {
-  // Hardcoded article data based on the provided image
+  // Updated hardcoded article data, including the new one
   const articles = [
-    // 2023
     {
-      id: "1", // Assuming IDs for links, adjust if needed
-      title: "The Forgotten Art of Letter Writing",
-      date: "Nov 15",
-      year: 2023
+      id: "ai-cad-lamp", // Example slug ID
+      title: "AI-Powered CAD And The Electric Lamp Problem",
+      date: "Feb 6", // Shortened date format for display
+      fullDate: "February 6, 2025", // Keep full date if needed later
+      year: 2025
     },
     {
-      id: "2",
-      title: "Analog Photography in a Digital World",
-      date: "Aug 3",
-      year: 2023
+      id: "sunk-cost",
+      title: "The Sunk Cost Fallacy",
+      date: "Sep 21",
+      fullDate: "September 21, 2024",
+      year: 2024
     },
     {
-      id: "3",
-      title: "The Tactile Experience of Physical Books",
-      date: "Apr 22",
-      year: 2023
-    },
-    // 2022
-    {
-      id: "4",
-      title: "Typewriters and Their Modern Appeal",
-      date: "Dec 10",
-      year: 2022
+      id: "how-you-do",
+      title: "How You Do Something Is How You Do Everything",
+      date: "Sep 15",
+      fullDate: "September 15, 2024",
+      year: 2024
     },
     {
-      id: "5",
-      title: "Cultural Preservation Through Traditional Crafts",
-      date: "Sep 18",
-      year: 2022
+      id: "notes-on-curiosity", // Added new article
+      title: "Notes on Curiosity",
+      date: "Apr 15",
+      fullDate: "April 15, 2025",
+      year: 2025
     },
-    {
-      id: "6",
-      title: "Vinyl Records: The Ritual of Listening",
-      date: "May 7",
-      year: 2022
-    },
-    // 2021
-    {
-      id: "7",
-      title: "The Slow Movement: Reclaiming Our Time",
-      date: "Nov 30",
-      year: 2021
-    },
-    {
-      id: "8",
-      title: "Fountain Pens as Tools of Intention",
-      date: "Aug 14",
-      year: 2021
-    }
   ];
 
   // Group articles by year
@@ -65,12 +42,19 @@ const Blog = () => {
     if (!acc[year]) {
       acc[year] = [];
     }
-    acc[year].push(article);
+    // Just push articles into the year's array
+    acc[year].push(article); 
     return acc;
   }, {});
 
   // Get sorted years (descending)
   const sortedYears = Object.keys(articlesByYear).map(Number).sort((a, b) => b - a);
+
+  // Helper function to parse date for sorting (e.g., "Sep 21", 2024 -> Date object)
+  const parseDate = (dateStr, year) => {
+    // Simple parsing assuming "Mmm DD" format. Adjust if format varies.
+    return new Date(`${dateStr} ${year}`);
+  };
 
   return (
     <Layout>
@@ -87,7 +71,11 @@ const Blog = () => {
                   </div>
                   {/* Articles Column */}
                   <div>
-                    {articlesByYear[year].map((article, index) => (
+                    {/* Sort articles within the year by date (newest first) before mapping */}
+                    {articlesByYear[year]
+                      // Correct sorting by converting dates to timestamps
+                      .sort((a, b) => parseDate(b.date, b.year).getTime() - parseDate(a.date, a.year).getTime())
+                      .map((article, index) => (
                       <React.Fragment key={article.id}>
                         <article className="group py-6"> {/* Added padding top/bottom */}
                           <div className="flex justify-between items-baseline">
