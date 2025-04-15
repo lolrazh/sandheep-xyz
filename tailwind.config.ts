@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,13 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				linen: '#FAF0E6',
+				jet: '#000000',
+			},
+			fontFamily: {
+				'playfair': ['"Playfair Display"', 'serif'],
+				'lexend': ['"Lexend Deca"', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +91,32 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'film-grain': {
+					'0%, 100%': { 
+						transform: 'translate(0, 0)' 
+					},
+					'10%': { 
+						transform: 'translate(-5%, -5%)' 
+					},
+					'30%': { 
+						transform: 'translate(3%, -2%)' 
+					},
+					'50%': { 
+						transform: 'translate(0, 5%)' 
+					},
+					'70%': { 
+						transform: 'translate(5%, 0%)' 
+					},
+					'90%': { 
+						transform: 'translate(-2%, 3%)' 
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'film-grain': 'film-grain 0.5s steps(1) infinite'
 			}
 		}
 	},
