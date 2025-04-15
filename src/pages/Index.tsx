@@ -10,7 +10,8 @@ const Index = () => {
 
   return (
     <Layout>
-      <div className="mx-auto max-w-3xl py-10">
+      <div className="mx-auto max-w-2xl py-16">
+        <h1 className="text-3xl font-playfair font-medium mb-10">Writings</h1>
         {years.map(year => (
           <YearSection 
             key={year} 

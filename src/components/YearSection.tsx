@@ -19,7 +19,7 @@ const YearSection: React.FC<YearSectionProps> = ({ year, articles }) => {
           {articles.map((article, index) => (
             <React.Fragment key={article.id}>
               <ArticleCard article={article} />
-              {index < articles.length - 1 && <Separator className="my-6" />}
+              {index < articles.length - 1 && <Separator className="my-6 bg-jet/20" />}
             </React.Fragment>
           ))}
         </div>
