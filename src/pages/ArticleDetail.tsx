@@ -30,15 +30,15 @@ const ArticleDetail = () => {
 
   return (
     <Layout>
-      <article className="mx-auto max-w-3xl">
-        <div className="mb-2">
-          <span className="font-lexend text-xs uppercase tracking-wider text-jet/60">
+      <article className="mx-auto max-w-3xl px-4">
+        <div className="mb-4 mt-8">
+          <span className="font-lexend text-sm uppercase tracking-wider text-jet/60">
             {article.fullDate}
           </span>
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">{article.title}</h1>
+        <h1 className="text-3xl md:text-4xl font-bold mb-8">{article.title}</h1>
         
-        <div className="prose prose-lg prose-slate mx-auto">
+        <div className="prose prose-lg prose-slate mx-auto [&>p]:text-xl [&>p]:leading-relaxed [&>p]:mb-6 [&>p]:whitespace-pre-line">
           <ReactMarkdown>{content}</ReactMarkdown>
         </div>
         
