@@ -97,7 +97,7 @@ const ArticleDetail = () => {
             onClick={() => navigate('/')} 
             className="font-lexend text-sm uppercase tracking-wider text-jet/70 hover:text-jet transition-colors"
           >
-            ← Back to Articles
+            ← Back to Writings
           </button>
         </div>
       </article>
