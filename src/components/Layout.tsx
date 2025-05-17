@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import { Instagram, Linkedin, Github, Twitter, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Analytics } from "@vercel/analytics/next"
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -12,7 +13,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { icon: Mail, url: 'mailto:rajkumar.sandheep@gmail.com', label: 'Email' },
     { icon: Linkedin, url: 'https://linkedin.com/in/sandheeprajkumar', label: 'LinkedIn' },
     { icon: Github, url: 'https://github.com/lolrazh', label: 'GitHub' },
-    { icon: Twitter, url: 'https://x.com/sheeshlordsandy', label: 'X' },
+    { icon: Twitter, url: 'https://x.com/LolRazhX', label: 'X' },
     { icon: Instagram, url: 'https://instagram.com/lolrazh', label: 'Instagram' },
   ];
 
