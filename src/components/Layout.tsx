@@ -2,7 +2,6 @@ import React from 'react';
 import Header from './Header';
 import { Instagram, Linkedin, Github, Twitter, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Analytics } from "@vercel/analytics/next"
 
 interface LayoutProps {
   children: React.ReactNode;
