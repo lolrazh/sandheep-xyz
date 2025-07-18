@@ -9,6 +9,10 @@ interface Link {
 
 const links: Link[] = [
   {
+    title: "The Almanack of Naval Ravikant",
+    url: "https://www.goodreads.com/book/show/54898389-the-almanack-of-naval-ravikant"
+  },
+  {
     title: "How To Be Successful",
     url: "https://blog.samaltman.com/how-to-be-successful"
   },
@@ -29,10 +33,6 @@ const links: Link[] = [
     url: "https://www.youtube.com/watch?v=7CZyDPELXs4&ab_channel=PBSAmerica"
   },
   {
-    title: "Intro to Special Relativity",
-    url: "https://youtube.com/playlist?list=PLoaVOjvkzQtyjhV55wZcdicAz5KexgKvm&si=WBopx4bzVDecpLrB"
-  },
-  {
     title: "The Darthmouth Scar Experiment",
     url: "https://www.psychologytoday.com/us/blog/beyond-school-walls/202410/invisible-scars"
   },
@@ -41,8 +41,12 @@ const links: Link[] = [
     url: "https://en.wikipedia.org/wiki/Inattentional_blindness#Invisible_Gorilla_Test"
   },
   {
-    title: "Age of Entanglement",
-    url: "https://jods.mitpress.mit.edu/pub/ageofentanglement/release/1"
+    title: "Outliers",
+    url: "https://www.goodreads.com/book/show/3228917-outliers"
+  },
+  {
+    title: "Human Behavioral Biology",
+    url: "https://www.youtube.com/playlist?list=PL848F2368C90DDC3D"
   }
 ];
 
