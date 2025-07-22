@@ -9,6 +9,10 @@ interface Link {
 
 const links: Link[] = [
   {
+    title: "Steve Jobs' 2005 Stanford Commencement Address",
+    url: "https://youtu.be/UF8uR6Z6KLc?si=NZ33mTIRvYuhDOYw"
+  },
+  {
     title: "The Almanack of Naval Ravikant",
     url: "https://www.goodreads.com/book/show/54898389-the-almanack-of-naval-ravikant"
   },
