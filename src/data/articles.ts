@@ -9,10 +9,10 @@ export const articles: Article[] = [
     year: 2025
   },
   {
-    id: "curiosity",
-    title: "Notes on Curiosity",
-    date: "Apr 15",
-    fullDate: "April 15, 2025",
+    id: "slowdeathofwonder",
+    title: "The Slow Death of Wonder",
+    date: "Jul 25",
+    fullDate: "July 25, 2025",
     year: 2025
   },
   {
