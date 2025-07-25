@@ -14,20 +14,22 @@ I started calling this little window as the “Almost Get It State” (through l
 
 Because as we grow older, our capacity for abstraction actually increases. So why aren’t we more curious than kids are? Pride, ego and shame are definitely part of the answer. When you grow up being told you’re smart, you often avoid the possibility of failure just to protect that identity. So maybe our AGIS does widen as we get older but we just tend to access less of it? Which says a lot about the importance of psychological safety in order to get curious in the first place. There’s also some factors other than shame I can think of,
 
-- **Assumption Cementing:** To think you already know what you’re supposed to know.
-- **Agency Loss:** A belief that your exploration will have no value.
-- **Fear of Exclusion:** Almost a very primal survival mechanism.
+**Assumption Cementing:** To think you already know what you’re supposed to know.
+**Agency Loss:** A belief that your exploration will have no value.
+**Fear of Exclusion:** Almost a very primal survival mechanism.
 
 Another factor I noticed was actually about the stimuli that triggers your curiosity in the first place. Curiosity that is triggered by external stimuli is very different from the curiosity triggered by internal stimuli. And they’ve got cool-sounding names as well. Perceptual Curiosity (i.e external) and Epistemic Curiosity (i.e internal).
 
-- **Perceptual Curiosity:** Triggered by novel stimuli.
-- **Epistemic Curiosity:** Triggered by a desire for knowledge.
+**Perceptual Curiosity:** Triggered by novel stimuli.
+**Epistemic Curiosity:** Triggered by a desire for knowledge.
 
 And you don’t have to be Einstein to figure out which one lasts and which doesn’t. But again, they serve different purposes. All curiosity starts off as perceptual but if it does not convert to an epistemic curiosity in time, it WILL die out. Which is why we start off learning things with so much energy and then just get bored (there’s other factors at play here too but this is a big one).
 
 *So, how does all of this actually work in practice?*
 
 Think of it this way, every piece of information that hits you is pretty much asking the same question. Are you going to let it bounce off your existing assumptions, or are you going to let it create some productive tension? Curiosity isn’t random. It follows predictable pathways, and most of those pathways have failure points where we bail out and choose comfort instead. I also made a diagram that maps out what I think is happening in those moments leading to genuine curiosity.
+
+![Curiosity Pathway Diagram](/assets/articles/slowdeathofwonder/flow.png)
 
 Your phone can be a curiosity-killer if you use it to doomscroll away every moment of high-energy boredom. But it can also be the thing that drops you into a YouTube rabbit hole at 2 AM because you suddenly need to understand how quantum tunneling works, or why the Roman Empire really fell. At this point it’s safe to say that smartphones definitely aren’t killing your curiosity. But you know what is? 
 
