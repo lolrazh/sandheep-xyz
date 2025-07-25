@@ -10,7 +10,7 @@ const articleContents: Record<string, Promise<{ default: string }>> = {
   electriclamp: import('../../content/articles/electriclamp.md?raw'),
   sunkcostfallacy: import('../../content/articles/sunkcostfallacy.md?raw'),
   howyoudosomething: import('../../content/articles/howyoudosomething.md?raw'),
-  curiosity: import('../../content/articles/curiosity.md?raw'),
+  slowdeathofwonder: import('../../content/articles/slowdeathofwonder.md?raw'),
 };
 
 export const getArticleContent = async (id: string): Promise<string | undefined> => {
