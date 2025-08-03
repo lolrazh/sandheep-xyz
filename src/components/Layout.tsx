@@ -12,7 +12,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { icon: Mail, url: 'mailto:rajkumar.sandheep@gmail.com', label: 'Email' },
     { icon: Linkedin, url: 'https://linkedin.com/in/sandheeprajkumar', label: 'LinkedIn' },
     { icon: Github, url: 'https://github.com/lolrazh', label: 'GitHub' },
-    { icon: Twitter, url: 'https://x.com/LolRazhX', label: 'X' },
+    { icon: Twitter, url: 'https://x.com/lolrazhx', label: 'X' },
     { icon: Instagram, url: 'https://instagram.com/lolrazh', label: 'Instagram' },
   ];
 
