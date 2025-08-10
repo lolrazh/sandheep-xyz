@@ -39,7 +39,7 @@ const ArticleDetail = () => {
           <p className="mb-6">The article you're looking for doesn't exist or has been removed.</p>
           <button 
             onClick={() => navigate('/')} 
-            className="font-lexend text-sm uppercase tracking-wider px-6 py-2 border border-jet/20 hover:border-jet/60 transition-colors"
+            className="font-lexend text-sm uppercase tracking-wider px-6 py-2 border border-border/20 hover:border-foreground/60 transition-colors"
           >
             Return Home
           </button>
@@ -66,7 +66,7 @@ const ArticleDetail = () => {
           <p className="mb-6">There was an error loading the article content.</p>
           <button 
             onClick={() => navigate('/')} 
-            className="font-lexend text-sm uppercase tracking-wider px-6 py-2 border border-jet/20 hover:border-jet/60 transition-colors"
+            className="font-lexend text-sm uppercase tracking-wider px-6 py-2 border border-border/20 hover:border-foreground/60 transition-colors"
           >
             Return Home
           </button>
@@ -81,21 +81,21 @@ const ArticleDetail = () => {
         <div className="mt-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">{article.title}</h1>
           <div className="mb-6">
-            <span className="font-lexend text-sm uppercase tracking-wider text-jet/60">
+            <span className="font-lexend text-sm uppercase tracking-wider text-foreground/60">
               SANDHEEP RAJKUMAR | {article.fullDate}
             </span>
           </div>
-          <Separator className="bg-jet/20 mb-12" />
+          <Separator className="bg-border/20 mb-12" />
         </div>
         
         <div className="prose prose-lg prose-slate mx-auto [&>p]:text-lg [&>p]:leading-relaxed [&>p]:mb-6 [&>p]:whitespace-pre-line">
           <ReactMarkdown>{content}</ReactMarkdown>
         </div>
         
-        <div className="mt-12 pt-6 border-t border-jet/10">
+        <div className="mt-12 pt-6 border-t border-border/10">
           <button 
             onClick={() => navigate('/')} 
-            className="font-lexend text-sm uppercase tracking-wider text-jet/70 hover:text-jet transition-colors"
+            className="font-lexend text-sm uppercase tracking-wider text-foreground/70 hover:text-foreground transition-colors"
           >
             ← Back to Writings
           </button>

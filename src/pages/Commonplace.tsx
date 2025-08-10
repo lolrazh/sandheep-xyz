@@ -74,13 +74,13 @@ const Commonplace = () => {
                       {link.title}
                     </a>
                   </h2>
-                  <span className="font-mono text-xs text-jet/60 whitespace-nowrap pl-4">
+                  <span className="font-mono text-xs text-foreground/60 whitespace-nowrap pl-4">
                     {new URL(link.url).hostname.replace('www.', '')}
                   </span>
                 </div>
               </article>
               {index < links.length - 1 && (
-                <Separator className="bg-jet/10" />
+                <Separator className="bg-border/10" />
               )}
             </React.Fragment>
           ))}

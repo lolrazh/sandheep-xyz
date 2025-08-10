@@ -17,15 +17,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-linen relative flex flex-col">
+    <div className="min-h-screen bg-background relative flex flex-col">
       <div className="film-grain"></div>
       <Header />
       <main className="container mx-auto max-w-4xl px-4 pb-12 flex-1">
         {children}
       </main>
-      <footer className="container mx-auto max-w-4xl px-4 py-8 border-t border-jet/10">
+      <footer className="container mx-auto max-w-4xl px-4 py-8 border-t border-border/10">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="font-lexend text-xs uppercase tracking-wider text-jet/50 mb-3 md:mb-0">
+                      <p className="font-lexend text-xs uppercase tracking-wider text-foreground/50 mb-3 md:mb-0">
             © {new Date().getFullYear()} Sandheep Rajkumar
           </p>
           <div className="flex space-x-4">
@@ -37,7 +37,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   href={link.url} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-jet/50 hover:text-jet transition-colors"
+                  className="text-foreground/50 hover:text-foreground transition-colors"
                   aria-label={link.label}
                 >
                   <Icon size={18} />

@@ -1,20 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { ReadingProgressBar } from '@/components/ReadingProgressBar';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement | null>(null);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-    // Prevent scrolling when menu is open
-    document.body.style.overflow = isMenuOpen ? 'unset' : 'hidden';
+    setIsMenuOpen((prev) => {
+      const next = !prev;
+      document.body.style.overflow = next ? 'hidden' : 'unset';
+      return next;
+    });
   };
 
   const closeMenu = () => {
     setIsMenuOpen(false);
     document.body.style.overflow = 'unset';
   };
+
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      const height = headerRef.current?.offsetHeight || 0;
+      document.documentElement.style.setProperty('--header-height', `${height}px`);
+    };
+    updateHeaderHeight();
+    window.addEventListener('resize', updateHeaderHeight);
+    return () => window.removeEventListener('resize', updateHeaderHeight);
+  }, []);
 
   const menuItems = [
     { to: "/blog", label: "Blog" },
@@ -23,8 +36,8 @@ const Header = () => {
   ];
 
   return (
-    <header className="py-6 px-2 md:px-4 border-b border-jet/10">
-      <div className="container mx-auto max-w-4xl">
+    <header ref={headerRef} className="sticky top-0 z-60 bg-background border-b border-border/10">
+      <div className="container mx-auto max-w-4xl px-2 md:px-4 py-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link to="/" className="no-underline mr-4" onClick={closeMenu}>
@@ -35,49 +48,75 @@ const Header = () => {
           </div>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6 font-lexend text-sm uppercase tracking-wider">
+          <nav className="hidden md:flex items-center space-x-6 font-lexend text-sm uppercase tracking-wider">
             {menuItems.map((item) => (
               <Link key={item.to} to={item.to} className="article-link">
                 {item.label}
               </Link>
             ))}
-          </div>
+          </nav>
 
-          {/* Mobile Menu Button */}
-          <button 
+          {/* Mobile Menu Button with morph animation */}
+          <button
             onClick={toggleMenu}
-            className="md:hidden text-jet/70 hover:text-jet transition-colors"
-            aria-label="Toggle menu"
+            className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md text-foreground/90 hover:bg-accent/50 transition-colors group"
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           >
-            <Menu size={24} />
+            <svg
+              className="pointer-events-none"
+              width={20}
+              height={20}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M4 12L20 12"
+                className="origin-center -translate-y-[7px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-x-0 group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[315deg]"
+              />
+              <path
+                d="M4 12H20"
+                className="origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] group-aria-expanded:rotate-45"
+              />
+              <path
+                d="M4 12H20"
+                className="origin-center translate-y-[7px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[135deg]"
+              />
+            </svg>
           </button>
         </div>
       </div>
+      {/* Progress bar: full-bleed on mobile, constrained in container on md+ */}
+      <div className="block md:hidden">
+        <ReadingProgressBar withinHeader />
+      </div>
+      <div className="hidden md:block">
+        <div className="container mx-auto max-w-4xl px-2 md:px-4">
+          <ReadingProgressBar withinHeader />
+        </div>
+      </div>
 
-      {/* Mobile Menu Overlay */}
-      <div 
-        className={`fixed inset-0 bg-linen z-50 md:hidden transition-opacity duration-300 ease-in-out ${
+      {/* Mobile Menu Overlay (below sticky header) */}
+      <div
+        className={`fixed inset-x-0 top-[var(--header-height,0px)] bottom-0 z-50 md:hidden transition-opacity duration-300 ease-in-out bg-background ${
           isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
+        role="dialog"
+        aria-modal="true"
       >
-        {/* Close button */}
-        <button 
-          onClick={closeMenu}
-          className="absolute top-7 right-6 text-jet/70 hover:text-jet transition-colors"
-          aria-label="Close menu"
-        >
-          <X size={24} />
-        </button>
-
         <div className="flex flex-col items-center justify-center h-full space-y-8 font-lexend text-lg uppercase tracking-wider">
           {menuItems.map((item, index) => (
             <Link
               key={item.to}
               to={item.to}
               className={`article-link transition-all duration-300 ease-in-out ${
-                isMenuOpen 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-4'
+                isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
               onClick={closeMenu}

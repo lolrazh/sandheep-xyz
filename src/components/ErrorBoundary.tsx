@@ -26,12 +26,12 @@ class ErrorBoundary extends Component<Props, State> {
       return (
         <div className="flex flex-col items-center justify-center py-20 text-center">
           <h2 className="text-2xl font-medium mb-4">Something went wrong</h2>
-          <p className="text-jet/70 mb-6">
+          <p className="text-foreground/70 mb-6">
             Please try refreshing the page or come back later.
           </p>
           <button
             onClick={() => window.location.reload()}
-            className="font-lexend text-sm uppercase tracking-wider text-jet/70 hover:text-jet transition-colors"
+            className="font-lexend text-sm uppercase tracking-wider text-foreground/70 hover:text-foreground transition-colors"
           >
             ↻ Refresh Page
           </button>
