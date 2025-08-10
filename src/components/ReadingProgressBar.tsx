@@ -1,17 +1,21 @@
 import React from "react";
 import { useReadingProgress } from "@/hooks/useReadingProgress";
 
-export function ReadingProgressBar(): React.JSX.Element {
+type ReadingProgressBarProps = {
+  withinHeader?: boolean;
+};
+
+export function ReadingProgressBar({ withinHeader = false }: ReadingProgressBarProps): React.JSX.Element {
   const progress = useReadingProgress();
 
   const isTrivial = progress === 0 || Number.isNaN(progress);
 
+  const containerClass = withinHeader
+    ? "w-full h-[3px] bg-border/60"
+    : "sticky top-[var(--header-height,0px)] z-50 h-[3px] bg-border/60";
+
   return (
-    <div
-      className="sticky top-0 z-50 h-[3px] bg-border/30"
-      style={{ paddingTop: "env(safe-area-inset-top)" }}
-      aria-hidden="true"
-    >
+    <div className={containerClass} aria-hidden="true">
       <div
         className={[
           "h-full origin-left bg-foreground will-change-transform",

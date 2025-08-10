@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { ReadingProgressBar } from '@/components/ReadingProgressBar';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,14 +59,14 @@ const Header = () => {
           {/* Mobile Menu Button with morph animation */}
           <button
             onClick={toggleMenu}
-            className="md:hidden inline-flex items-center justify-center h-9 w-9 rounded-md border border-border/50 text-foreground/80 hover:bg-accent/50 transition-colors group"
+            className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md text-foreground/90 hover:bg-accent/50 transition-colors group"
             aria-expanded={isMenuOpen}
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           >
             <svg
               className="pointer-events-none"
-              width={16}
-              height={16}
+              width={20}
+              height={20}
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -90,6 +90,15 @@ const Header = () => {
               />
             </svg>
           </button>
+        </div>
+      </div>
+      {/* Progress bar: full-bleed on mobile, constrained in container on md+ */}
+      <div className="block md:hidden">
+        <ReadingProgressBar withinHeader />
+      </div>
+      <div className="hidden md:block">
+        <div className="container mx-auto max-w-4xl px-2 md:px-4">
+          <ReadingProgressBar withinHeader />
         </div>
       </div>
 
