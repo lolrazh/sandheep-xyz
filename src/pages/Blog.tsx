@@ -33,7 +33,7 @@ const Blog = () => {
               <section>
                 <div className="grid grid-cols-[5rem_1fr] gap-x-4 gap-y-0"> {/* Grid layout */}
                   {/* Year Column */}
-                  <div className="text-jet/60 text-xl font-lexend font-light pt-6"> {/* Align year text with first article */}
+                  <div className="text-foreground/60 text-xl font-lexend font-light pt-6"> {/* Align year text with first article */}
                     {year}
                   </div>
                   {/* Articles Column */}
@@ -52,14 +52,14 @@ const Blog = () => {
                                 {article.title}
                               </Link>
                             </h2>
-                            <span className="font-lexend text-sm text-jet/60 whitespace-nowrap pl-4"> {/* Ensure date doesn't wrap */}
+                            <span className="font-lexend text-sm text-foreground/60 whitespace-nowrap pl-4"> {/* Ensure date doesn't wrap */}
                               {article.date}
                             </span>
                           </div>
                         </article>
                         {/* Add separator between articles, but not after the last one in the year */}
                         {index < articlesByYear[year].length - 1 && (
-                          <Separator className="bg-jet/10" />
+                          <Separator className="bg-border/10" />
                         )}
                       </React.Fragment>
                     ))}
@@ -68,7 +68,7 @@ const Blog = () => {
               </section>
               {/* Add thicker separator between years, but not after the last year */}
               {yearIndex < sortedYears.length - 1 && (
-                <Separator className="bg-jet/20 h-0.5 my-4" /> /* Added margin */
+                <Separator className="bg-border/20 h-0.5 my-4" /> /* Added margin */
               )}
             </React.Fragment>
           ))}

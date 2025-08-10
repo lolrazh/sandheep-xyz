@@ -63,8 +63,6 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				linen: '#FAF0E6',
-				jet: '#000000',
 			},
 			fontFamily: {
 				'playfair': ['"Playfair Display"', 'serif'],
