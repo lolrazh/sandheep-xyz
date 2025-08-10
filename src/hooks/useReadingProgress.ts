@@ -8,11 +8,13 @@ export function useReadingProgress(): number {
 
     const calculate = () => {
       const doc = document.documentElement;
-      const scrollTop = doc.scrollTop || document.body.scrollTop;
-      const scrollHeight = doc.scrollHeight || document.body.scrollHeight;
-      const clientHeight = window.innerHeight;
+      const scrollTop = Math.max(doc.scrollTop || document.body.scrollTop || 0, 0);
+      const scrollHeight = Math.max(doc.scrollHeight || document.body.scrollHeight || 0, 0);
+      const clientHeight = Math.max(window.innerHeight || 0, 0);
       const maxScrollable = Math.max(scrollHeight - clientHeight, 1);
-      const value = Math.min(Math.max(scrollTop / maxScrollable, 0), 1);
+      let value = scrollTop / maxScrollable;
+      if (!Number.isFinite(value)) value = 0;
+      value = Math.min(Math.max(value, 0), 1);
       setProgress(value);
       ticking = false;
     };

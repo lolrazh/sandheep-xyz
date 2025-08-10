@@ -5,7 +5,6 @@ export function ReadingProgressBar(): React.JSX.Element {
   const progress = useReadingProgress();
 
   const isTrivial = progress === 0 || Number.isNaN(progress);
-  const isComplete = progress >= 0.999;
 
   return (
     <div
@@ -17,8 +16,7 @@ export function ReadingProgressBar(): React.JSX.Element {
         className={[
           "h-full origin-left bg-foreground will-change-transform",
           "transition-transform duration-xxs ease-standard",
-          isComplete ? "opacity-0 transition-opacity duration-sm" : "opacity-100",
-          isTrivial ? "opacity-0" : "",
+          isTrivial ? "opacity-0" : "opacity-100",
           "motion-reduce:transition-none",
         ].join(" ")}
         style={{ transform: `scaleX(${progress})` }}
