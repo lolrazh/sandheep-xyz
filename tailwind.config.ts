@@ -75,6 +75,24 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+        boxShadow: {
+          'elevation-1': 'var(--shadow-1)',
+          'elevation-2': 'var(--shadow-2)',
+          'elevation-3': 'var(--shadow-3)'
+        },
+        transitionTimingFunction: {
+          'in': 'var(--ease-in)',
+          'out': 'var(--ease-out)',
+          'standard': 'var(--ease-standard)'
+        },
+        transitionDuration: {
+          'xxs': 'var(--duration-xxs)',
+          'xs': 'var(--duration-xs)',
+          'sm': 'var(--duration-sm)',
+          'md': 'var(--duration-md)',
+          'lg': 'var(--duration-lg)',
+          'xl': 'var(--duration-xl)'
+        },
 			keyframes: {
 				'accordion-down': {
 					from: {
