@@ -6,6 +6,7 @@ import { getArticleContent } from '../utils/markdown';
 import ReactMarkdown from 'react-markdown';
 import { Separator } from "@/components/ui/separator";
 import LoadingSpinner from '../components/LoadingSpinner';
+import { ReadingProgressBar } from "@/components/ReadingProgressBar";
 
 const ArticleDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -77,6 +78,7 @@ const ArticleDetail = () => {
 
   return (
     <Layout>
+      <ReadingProgressBar />
       <article className="mx-auto max-w-3xl px-4">
         <div className="mt-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">{article.title}</h1>
