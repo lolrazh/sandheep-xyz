@@ -6,6 +6,8 @@ import { getArticleContent } from '../utils/markdown';
 import ReactMarkdown from 'react-markdown';
 import { Separator } from "@/components/ui/separator";
 import LoadingSpinner from '../components/LoadingSpinner';
+import { Helmet } from 'react-helmet-async';
+import { buildTitle, canonical, defaultDescription, defaultOgImage, descriptionFromMarkdown, buildArticleSchema } from '@/lib/seo';
 
 const ArticleDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -75,8 +77,37 @@ const ArticleDetail = () => {
     );
   }
 
+  const pageTitle = buildTitle(article.title);
+  const url = canonical(`/article/${article.id}`);
+  const desc = descriptionFromMarkdown(content || '') || defaultDescription;
+  const schema = buildArticleSchema({
+    url,
+    title: pageTitle,
+    description: desc,
+    datePublished: article.fullDate,
+  });
+
   return (
     <Layout>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={desc} />
+        <link rel="canonical" href={url} />
+
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={url} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={desc} />
+        <meta property="og:image" content={defaultOgImage} />
+        <meta property="og:site_name" content="Sandheep Rajkumar" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={desc} />
+        <meta name="twitter:image" content={defaultOgImage} />
+
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      </Helmet>
       <article className="mx-auto max-w-3xl px-4">
         <div className="mt-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">{article.title}</h1>

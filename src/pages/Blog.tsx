@@ -3,6 +3,8 @@ import Layout from '../components/Layout';
 import { Link } from 'react-router-dom'; // Import Link for internal navigation
 import { Separator } from "@/components/ui/separator"; // Import Separator
 import { articles } from '../data/articles';
+import { Helmet } from 'react-helmet-async';
+import { buildTitle, canonical, defaultDescription, defaultOgImage, buildWebPageSchema } from '@/lib/seo';
 
 const Blog = () => {
   // Group articles by year
@@ -13,7 +15,7 @@ const Blog = () => {
     }
     acc[year].push(article);
     return acc;
-  }, {});
+  }, {} as Record<number, typeof articles>);
 
   // Get sorted years (descending)
   const sortedYears = Object.keys(articlesByYear).map(Number).sort((a, b) => b - a);
@@ -23,8 +25,32 @@ const Blog = () => {
     return new Date(`${dateStr} ${year}`);
   };
 
+  const pageTitle = buildTitle('Writings');
+  const pageDescription = 'All writings by Sandheep Rajkumar.';
+  const url = canonical('/blog');
+  const schema = buildWebPageSchema({ url, title: pageTitle, description: pageDescription });
+
   return (
     <Layout>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription || defaultDescription} />
+        <link rel="canonical" href={url} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={url} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription || defaultDescription} />
+        <meta property="og:image" content={defaultOgImage} />
+        <meta property="og:site_name" content="Sandheep Rajkumar" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription || defaultDescription} />
+        <meta name="twitter:image" content={defaultOgImage} />
+
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      </Helmet>
       <div className="mx-auto max-w-2xl py-10"> {/* Adjusted padding slightly */}
         <h1 className="text-3xl font-playfair font-medium mb-10">Writings</h1>
         <div className="space-y-8"> {/* Increased spacing between year sections */}
