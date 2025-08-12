@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import { getArticleById } from '../data/articles';
 import { getArticleContent } from '../utils/markdown';
 import ReactMarkdown from 'react-markdown';
+import { shouldInvertImage } from '@/config/imageInversion';
 import { Separator } from "@/components/ui/separator";
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Helmet } from 'react-helmet-async';
@@ -120,7 +121,17 @@ const ArticleDetail = () => {
         </div>
         
         <div className="prose prose-lg prose-slate mx-auto [&>p]:text-lg [&>p]:leading-relaxed [&>p]:mb-6 [&>p]:whitespace-pre-line">
-          <ReactMarkdown>{content}</ReactMarkdown>
+          <ReactMarkdown
+            components={{
+              img: ({ node, ...props }) => {
+                const src = typeof props.src === 'string' ? props.src : undefined;
+                const className = [props.className, shouldInvertImage(src) ? 'invert-dark' : ''].filter(Boolean).join(' ');
+                return <img {...props} className={className} />;
+              },
+            }}
+          >
+            {content}
+          </ReactMarkdown>
         </div>
         
         <div className="mt-12 pt-6 border-t border-border/10">

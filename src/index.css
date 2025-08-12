@@ -188,6 +188,14 @@
     pointer-events: none;
   }
 
+  /* Utility: invert image in dark mode only */
+  .invert-dark {
+    filter: none;
+  }
+  .dark .invert-dark {
+    filter: invert(1) hue-rotate(180deg);
+  }
+
   .year-divider {
     @apply relative flex items-center my-8;
   }
