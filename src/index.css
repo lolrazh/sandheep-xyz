@@ -193,7 +193,7 @@
   }
 
   .year-divider::before, .year-divider::after {
-    @apply content-[''] flex-grow border-t border-border/60;
+    @apply content-[''] flex-grow border-t border-foreground/60;
   }
 
   .year-divider::before {
