@@ -24,8 +24,7 @@ const Header = () => {
   // Initialize and persist theme
   useEffect(() => {
     const stored = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const shouldBeDark = stored === 'dark' || (!stored && prefersDark);
+    const shouldBeDark = stored === 'dark';
     setIsDark(shouldBeDark);
     document.documentElement.classList.toggle('dark', shouldBeDark);
   }, []);
@@ -80,7 +79,7 @@ const Header = () => {
           <div className="justify-self-end flex items-center gap-2">
             <button
               onClick={toggleTheme}
-              className="inline-flex items-center justify-center h-10 w-10 rounded-md text-foreground/90 hover:bg-accent/50 transition-colors"
+              className="inline-flex items-center justify-center h-10 w-10 rounded-md text-foreground/90 hover:text-foreground transition-colors"
               aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
               title={isDark ? 'Light mode' : 'Dark mode'}
             >
@@ -90,7 +89,7 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md text-foreground/90 hover:bg-accent/50 transition-colors group"
+              className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md text-foreground/90 hover:text-foreground transition-colors group"
               aria-expanded={isMenuOpen}
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >

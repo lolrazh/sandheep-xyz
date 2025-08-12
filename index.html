@@ -41,9 +41,7 @@
       (function() {
         try {
           var stored = localStorage.getItem('theme');
-          var mql = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
-          var systemPrefersDark = mql && mql.matches;
-          var isDark = stored === 'dark' || (!stored && systemPrefersDark);
+          var isDark = stored === 'dark';
           if (isDark) document.documentElement.classList.add('dark');
         } catch (e) {}
       })();
