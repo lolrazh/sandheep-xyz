@@ -60,7 +60,7 @@ const Header = () => {
         {/* 3-column layout: left brand, center nav, right controls */}
         <div className="grid grid-cols-3 items-center">
           {/* Left: Brand */}
-          <div className="justify-self-start">
+          <div className="col-start-2 md:col-start-auto justify-self-center md:justify-self-start">
             <Link to="/" className="no-underline" onClick={closeMenu}>
               <h1 className="text-2xl md:text-3xl font-playfair font-medium tracking-tight">S/R</h1>
             </Link>
@@ -136,7 +136,7 @@ const Header = () => {
 
       {/* Mobile Menu Overlay (below sticky header) */}
       <div
-        className={`fixed inset-x-0 top-[var(--header-height,0px)] bottom-0 z-50 md:hidden transition-opacity duration-300 ease-in-out bg-background ${
+        className={`fixed inset-x-0 top-[var(--header-height,0px)] bottom-0 z-[150] md:hidden transition-opacity duration-300 ease-in-out bg-background/95 backdrop-blur-sm ${
           isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         role="dialog"
