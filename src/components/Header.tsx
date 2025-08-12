@@ -34,7 +34,11 @@ const Header = () => {
   const toggleTheme = () => {
     setIsDark((prev) => {
       const next = !prev;
+      document.documentElement.classList.add('theme-transition');
       document.documentElement.classList.toggle('dark', next);
+      window.setTimeout(() => {
+        document.documentElement.classList.remove('theme-transition');
+      }, 250);
       localStorage.setItem('theme', next ? 'dark' : 'light');
       return next;
     });

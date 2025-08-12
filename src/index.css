@@ -128,6 +128,13 @@
     --sidebar-ring: 0 0% 80%;
   }
 
+  /* Smooth theme transition helper */
+  .theme-transition, .theme-transition * {
+    transition-property: background-color, color, border-color, fill, stroke;
+    transition-duration: 250ms;
+    transition-timing-function: var(--ease-standard);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     :root {
       --duration-xxs: 1ms;
