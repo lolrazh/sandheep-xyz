@@ -3,27 +3,26 @@ import { useReadingProgress } from "@/hooks/useReadingProgress";
 
 type ReadingProgressBarProps = {
   withinHeader?: boolean;
+  active?: boolean;
 };
 
-export function ReadingProgressBar({ withinHeader = false }: ReadingProgressBarProps): React.JSX.Element {
-  const progress = useReadingProgress();
-
-  const isTrivial = progress === 0 || Number.isNaN(progress);
+export function ReadingProgressBar({ withinHeader = false, active = true }: ReadingProgressBarProps): React.JSX.Element {
+  const progress = useReadingProgress(active);
 
   const containerClass = withinHeader
-    ? "w-full h-[3px] bg-border/60"
-    : "sticky top-[var(--header-height,0px)] z-50 h-[3px] bg-border/60";
+    ? "w-full h-[2px] bg-border/60"
+    : "sticky top-[var(--header-height,0px)] z-60 h-[2px] bg-border/60";
 
   return (
     <div className={containerClass} aria-hidden="true">
       <div
         className={[
-          "h-full origin-left bg-foreground will-change-transform",
-          "transition-transform duration-xxs ease-standard",
-          isTrivial ? "opacity-0" : "opacity-100",
+          "h-full origin-left will-change-transform",
+          active ? "bg-foreground transition-transform duration-xxs ease-standard" : "bg-foreground transition-none",
+          active ? (progress > 0 ? "opacity-100" : "opacity-0") : "opacity-0",
           "motion-reduce:transition-none",
         ].join(" ")}
-        style={{ transform: `scaleX(${progress})` }}
+        style={{ transform: `scaleX(${active ? progress : 0})` }}
       />
     </div>
   );

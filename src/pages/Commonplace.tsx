@@ -1,6 +1,8 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import { Separator } from "@/components/ui/separator";
+import { Helmet } from 'react-helmet-async';
+import { buildTitle, canonical, defaultDescription, defaultOgImage, buildWebPageSchema } from '@/lib/seo';
 
 interface Link {
   title: string;
@@ -55,8 +57,32 @@ const links: Link[] = [
 ];
 
 const Commonplace = () => {
+  const pageTitle = buildTitle('Commonplace');
+  const pageDescription = 'A running list of links I find interesting.';
+  const url = canonical('/commonplace');
+  const schema = buildWebPageSchema({ url, title: pageTitle, description: pageDescription });
+
   return (
     <Layout>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription || defaultDescription} />
+        <link rel="canonical" href={url} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={url} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription || defaultDescription} />
+        <meta property="og:image" content={defaultOgImage} />
+        <meta property="og:site_name" content="Sandheep Rajkumar" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription || defaultDescription} />
+        <meta name="twitter:image" content={defaultOgImage} />
+
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      </Helmet>
       <div className="mx-auto max-w-2xl py-10">
         <h1 className="text-3xl font-playfair font-medium mb-10">Commonplace Book</h1>
         <div className="space-y-0">

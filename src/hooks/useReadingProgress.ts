@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 
-export function useReadingProgress(): number {
+export function useReadingProgress(enabled: boolean = true): number {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    if (!enabled) {
+      setProgress(0);
+      return;
+    }
+
     let ticking = false;
 
     const calculate = () => {
@@ -38,7 +43,7 @@ export function useReadingProgress(): number {
       window.removeEventListener("resize", onResize);
       window.removeEventListener("load", calculate);
     };
-  }, []);
+  }, [enabled]);
 
-  return progress;
+  return enabled ? progress : 0;
 }
