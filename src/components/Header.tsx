@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ReadingProgressBar } from '@/components/ReadingProgressBar';
 import { Moon, Sun } from 'lucide-react';
 
@@ -7,6 +7,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState<boolean>(false);
   const headerRef = useRef<HTMLElement | null>(null);
+  const location = useLocation();
+  const isArticlePage = location.pathname.startsWith('/article/');
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => {
@@ -124,19 +126,23 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Progress bar: full-bleed on mobile, constrained in container on md+ */}
-      <div className="block md:hidden">
-        <ReadingProgressBar withinHeader />
-      </div>
-      <div className="hidden md:block">
-        <div className="container mx-auto max-w-4xl px-2 md:px-4">
-          <ReadingProgressBar withinHeader />
-        </div>
-      </div>
+      {/* Progress bar: only on article pages */}
+      {isArticlePage && (
+        <>
+          <div className="block md:hidden">
+            <ReadingProgressBar withinHeader />
+          </div>
+          <div className="hidden md:block">
+            <div className="container mx-auto max-w-4xl px-2 md:px-4">
+              <ReadingProgressBar withinHeader />
+            </div>
+          </div>
+        </>
+      )}
 
       {/* Mobile Menu Overlay (below sticky header) */}
       <div
-        className={`fixed inset-x-0 top-[var(--header-height,0px)] bottom-0 z-[150] md:hidden transition-opacity duration-300 ease-in-out bg-background/95 backdrop-blur-sm ${
+        className={`fixed inset-x-0 top-[var(--header-height,0px)] bottom-0 z-[150] md:hidden transition-opacity duration-300 ease-in-out bg-background ${
           isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         role="dialog"
