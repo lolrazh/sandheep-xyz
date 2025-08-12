@@ -57,7 +57,7 @@ const Header = () => {
   ];
 
   return (
-    <header ref={headerRef} className="sticky top-0 z-60 bg-background border-b border-border/10">
+    <header ref={headerRef} className="sticky top-0 z-[160] bg-background border-b border-border/10">
       <div className="container mx-auto max-w-4xl px-2 md:px-4 py-6">
         {/* 3-column layout: left brand, center nav, right controls */}
         <div className="grid grid-cols-3 items-center">
@@ -126,23 +126,19 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Progress bar: only on article pages */}
-      {isArticlePage && (
-        <>
-          <div className="block md:hidden">
-            <ReadingProgressBar withinHeader />
-          </div>
-          <div className="hidden md:block">
-            <div className="container mx-auto max-w-4xl px-2 md:px-4">
-              <ReadingProgressBar withinHeader />
-            </div>
-          </div>
-        </>
-      )}
+      {/* Progress bar: always rendered; active only on article pages */}
+      <div className="block md:hidden">
+        <ReadingProgressBar withinHeader active={isArticlePage} />
+      </div>
+      <div className="hidden md:block">
+        <div className="container mx-auto max-w-4xl px-2 md:px-4">
+          <ReadingProgressBar withinHeader active={isArticlePage} />
+        </div>
+      </div>
 
       {/* Mobile Menu Overlay (below sticky header) */}
       <div
-        className={`fixed inset-x-0 top-[var(--header-height,0px)] bottom-0 z-[150] md:hidden transition-opacity duration-300 ease-in-out bg-background ${
+        className={`fixed inset-x-0 top-[var(--header-height,0px)] bottom-0 z-[155] md:hidden transition-opacity duration-300 ease-in-out bg-background ${
           isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         role="dialog"
