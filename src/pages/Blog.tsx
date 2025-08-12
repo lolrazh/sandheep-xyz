@@ -94,7 +94,7 @@ const Blog = () => {
               </section>
               {/* Add thicker separator between years, but not after the last year */}
               {yearIndex < sortedYears.length - 1 && (
-                <Separator className="bg-border/20 h-0.5 my-4" /> /* Added margin */
+                <Separator className="bg-foreground/60 h-0.5 my-4" />
               )}
             </React.Fragment>
           ))}
