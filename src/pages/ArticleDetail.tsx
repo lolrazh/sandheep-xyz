@@ -116,7 +116,7 @@ const ArticleDetail = () => {
               SANDHEEP RAJKUMAR | {article.fullDate}
             </span>
           </div>
-          <Separator className="bg-foreground/60 h-0.5 mb-12" />
+          <Separator className="bg-foreground/30 h-0.5 mb-12" />
         </div>
         
         <div className="prose prose-lg prose-slate mx-auto [&>p]:text-lg [&>p]:leading-relaxed [&>p]:mb-6 [&>p]:whitespace-pre-line">
