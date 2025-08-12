@@ -37,6 +37,17 @@
   </head>
 
   <body>
+    <script>
+      (function() {
+        try {
+          var stored = localStorage.getItem('theme');
+          var mql = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+          var systemPrefersDark = mql && mql.matches;
+          var isDark = stored === 'dark' || (!stored && systemPrefersDark);
+          if (isDark) document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
