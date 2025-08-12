@@ -10,8 +10,8 @@ export function ReadingProgressBar({ withinHeader = false, active = true }: Read
   const progress = useReadingProgress(active);
 
   const containerClass = withinHeader
-    ? `w-full h-[2px] ${active ? 'bg-border/60' : 'bg-transparent'}`
-    : `sticky top-[var(--header-height,0px)] z-60 h-[2px] ${active ? 'bg-border/60' : 'bg-transparent'}`;
+    ? "w-full h-[2px] bg-border/60"
+    : "sticky top-[var(--header-height,0px)] z-60 h-[2px] bg-border/60";
 
   return (
     <div className={containerClass} aria-hidden="true">
@@ -19,10 +19,10 @@ export function ReadingProgressBar({ withinHeader = false, active = true }: Read
         className={[
           "h-full origin-left will-change-transform",
           active ? "bg-foreground transition-transform duration-xxs ease-standard" : "bg-foreground transition-none",
-          active && progress > 0 ? "opacity-100" : active ? "opacity-0" : "opacity-100",
+          active ? (progress > 0 ? "opacity-100" : "opacity-0") : "opacity-0",
           "motion-reduce:transition-none",
         ].join(" ")}
-        style={{ transform: `scaleX(${active ? progress : 1})` }}
+        style={{ transform: `scaleX(${active ? progress : 0})` }}
       />
     </div>
   );
