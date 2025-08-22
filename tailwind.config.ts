@@ -4,10 +4,16 @@ import animate from "tailwindcss-animate"
 export default {
 	darkMode: ["class"],
 	content: [
-		"./pages/**/*.{ts,tsx}",
-		"./components/**/*.{ts,tsx}",
-		"./app/**/*.{ts,tsx}",
-		"./src/**/*.{ts,tsx}",
+		// Next.js App Router
+		"./app/**/*.{js,ts,jsx,tsx,mdx}",
+		// Components (current location during migration)
+		"./src/components/**/*.{js,ts,jsx,tsx}",
+		// Future Next.js components location
+		"./components/**/*.{js,ts,jsx,tsx}",
+		// Content files (markdown, etc.)
+		"./content/**/*.{md,mdx}",
+		// Legacy Vite paths (remove after migration is complete)
+		"./src/**/*.{js,ts,jsx,tsx}",
 	],
 	prefix: "",
 	theme: {

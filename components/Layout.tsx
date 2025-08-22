@@ -1,7 +1,9 @@
+'use client'
+
 import React from 'react';
 import Header from './Header';
 import { Instagram, Linkedin, Github, Twitter, Mail } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -25,7 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </main>
       <footer className="container mx-auto max-w-4xl px-4 py-8 border-t border-border/60">
         <div className="flex flex-col md:flex-row justify-between items-center">
-                      <p className="font-lexend text-xs uppercase tracking-wider text-foreground/50 mb-3 md:mb-0">
+          <p className="font-lexend text-xs uppercase tracking-wider text-foreground/50 mb-3 md:mb-0">
             © {new Date().getFullYear()} Sandheep Rajkumar
           </p>
           <div className="flex space-x-4">

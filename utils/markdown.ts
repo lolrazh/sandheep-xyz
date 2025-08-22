@@ -5,12 +5,12 @@ export interface ArticleWithContent extends Article {
   content: string;
 }
 
-// Import all markdown files
+// Import all markdown files with correct paths
 const articleContents: Record<string, Promise<{ default: string }>> = {
-  electriclamp: import('../../content/articles/electriclamp.md?raw'),
-  sunkcostfallacy: import('../../content/articles/sunkcostfallacy.md?raw'),
-  howyoudosomething: import('../../content/articles/howyoudosomething.md?raw'),
-  slowdeathofwonder: import('../../content/articles/slowdeathofwonder.md?raw'),
+  electriclamp: import('../content/articles/electriclamp.md?raw'),
+  sunkcostfallacy: import('../content/articles/sunkcostfallacy.md?raw'),
+  howyoudosomething: import('../content/articles/howyoudosomething.md?raw'),
+  slowdeathofwonder: import('../content/articles/slowdeathofwonder.md?raw'),
 };
 
 export const getArticleContent = async (id: string): Promise<string | undefined> => {
