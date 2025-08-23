@@ -77,14 +77,6 @@ const ArticleDetail = () => {
     );
   }
 
-  const url = canonical(`/article/${article.id}`);
-  const desc = descriptionFromMarkdown(content || '') || defaultDescription;
-  const schema = buildArticleSchema({
-    url,
-    title: pageTitle,
-    description: desc,
-    datePublished: article.fullDate,
-  });
 
   return (
     <Layout>
