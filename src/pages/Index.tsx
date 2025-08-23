@@ -3,7 +3,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import YearSection from '../components/YearSection';
 import { getArticlesByYear } from '../data/articles';
-import { Helmet } from 'react-helmet-async';
+// import { Helmet } from 'react-helmet-async';
 import { buildTitle, canonical, defaultDescription, defaultOgImage, buildWebPageSchema } from '@/lib/seo';
 
 const Index = () => {

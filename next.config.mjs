@@ -5,6 +5,23 @@ const nextConfig = {
   trailingSlash: true,
   images: {
     unoptimized: true
+  },
+  webpack: (config, { isServer }) => {
+    // Handle raw imports for markdown files
+    config.module.rules.push({
+      test: /\.md$/,
+      type: 'asset/source',
+    });
+    
+    return config;
+  },
+  turbopack: {
+    rules: {
+      '*.md': {
+        loaders: ['raw-loader'],
+        as: '*.js',
+      },
+    },
   }
 }
 

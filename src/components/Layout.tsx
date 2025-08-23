@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import { Instagram, Linkedin, Github, Twitter, Mail } from 'lucide-react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 interface LayoutProps {
   children: React.ReactNode;
