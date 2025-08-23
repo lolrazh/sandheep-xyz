@@ -1,8 +1,9 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getArticleById, articles } from '../../../src/data/articles'
-import { buildTitle, canonical, defaultOgImage } from '../../../src/lib/seo'
-import ArticleClientWrapper from './ArticleClientWrapper'
+import { getArticleContent } from '../../../src/utils/markdown'
+import { buildTitle, canonical, defaultOgImage, descriptionFromMarkdown } from '../../../src/lib/seo'
+import ServerArticleDetail from '../../../src/components/ServerArticleDetail'
 
 type Props = {
   params: Promise<{ id: string }>
@@ -25,8 +26,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
+  // Get actual content for better SEO description
+  const content = await getArticleContent(id)
+  const description = content 
+    ? descriptionFromMarkdown(content) 
+    : (article.excerpt || 'Read this article by Sandheep Rajkumar')
+
   const title = buildTitle(article.title)
-  const description = article.excerpt || 'Read this article by Sandheep Rajkumar'
   const url = canonical(`/article/${id}`)
 
   return {
@@ -68,5 +74,5 @@ export default async function ArticlePage({ params }: Props) {
     notFound()
   }
 
-  return <ArticleClientWrapper />
+  return <ServerArticleDetail id={id} />
 }
