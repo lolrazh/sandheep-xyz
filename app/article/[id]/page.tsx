@@ -1,11 +1,17 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getArticleById } from '../../../src/data/articles'
+import { getArticleById, articles } from '../../../src/data/articles'
 import { buildTitle, canonical, defaultOgImage } from '../../../src/lib/seo'
 import ArticleClientWrapper from './ArticleClientWrapper'
 
 type Props = {
   params: Promise<{ id: string }>
+}
+
+export async function generateStaticParams() {
+  return articles.map((article) => ({
+    id: article.id,
+  }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

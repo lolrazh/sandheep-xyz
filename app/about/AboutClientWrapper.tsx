@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import About from "../../src/pages/About";
+import About from "../../src/components-old/About";
 import { inject } from '@vercel/analytics'
 
 const queryClient = new QueryClient();
