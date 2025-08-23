@@ -17,8 +17,8 @@ const lexendDeca = Lexend_Deca({
 })
 
 export const metadata = {
-  title: 'Sandheep Thakur',
-  description: 'Personal website and blog of Sandheep Thakur',
+  title: 'Sandheep Rajkumar',
+  description: 'Personal website and blog of Sandheep Rajkumar',
 }
 
 export default function RootLayout({
