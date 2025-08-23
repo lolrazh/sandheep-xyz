@@ -91,7 +91,7 @@ const ArticleDetail = () => {
           <Separator className="bg-foreground/30 h-0.5 mb-12" />
         </div>
         
-        <div className="prose prose-lg prose-slate mx-auto [&>p]:text-lg [&>p]:leading-relaxed [&>p]:mb-6 [&>p]:whitespace-pre-line">
+        <div className="prose prose-lg prose-slate mx-auto font-playfair [&>p]:text-lg [&>p]:leading-relaxed [&>p]:mb-6 [&>p]:whitespace-pre-line">
           <ReactMarkdown
             components={{
               img: ({ node, ...props }) => {
