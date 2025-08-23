@@ -1,19 +1,15 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "sandheep-xyz-nextjs",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "dev:vite": "vite",
-    "build:vite": "vite build && node scripts/generate-sitemap-and-feed.mjs",
-    "build:dev": "vite build --mode development && node scripts/generate-sitemap-and-feed.mjs",
     "postbuild": "node scripts/generate-sitemap-and-feed.mjs",
     "gen:seo": "node scripts/generate-sitemap-and-feed.mjs",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { buildTitle, canonical, defaultOgImage } from '../../src/lib/seo'
-import CommonplaceClientWrapper from './CommonplaceClientWrapper'
+import Layout from '../../src/components/Layout'
 
 export const metadata: Metadata = {
   title: buildTitle('Commonplace'),
@@ -32,5 +32,14 @@ export const metadata: Metadata = {
 }
 
 export default function CommonplacePage() {
-  return <CommonplaceClientWrapper />
+  return (
+    <Layout>
+      <div className="mx-auto max-w-2xl py-10">
+        <h1 className="text-3xl font-playfair font-medium mb-10">Commonplace Book</h1>
+        <p className="text-lg text-foreground/80">
+          Work in progress. This will be a collection of thoughts, quotes, and interesting links.
+        </p>
+      </div>
+    </Layout>
+  )
 }

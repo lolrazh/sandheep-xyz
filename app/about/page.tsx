@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { buildTitle, canonical, defaultDescription, defaultOgImage } from '../../src/lib/seo'
-import AboutClientWrapper from './AboutClientWrapper'
+import Layout from '../../src/components/Layout'
 
 export const metadata: Metadata = {
   title: buildTitle('About'),
@@ -32,5 +32,14 @@ export const metadata: Metadata = {
 }
 
 export default function AboutPage() {
-  return <AboutClientWrapper />
+  return (
+    <Layout>
+      <div className="mx-auto max-w-3xl py-10">
+        <h1 className="text-3xl font-playfair font-medium mb-6">About Sandheep Rajkumar</h1>
+        <p className="text-lg text-foreground/80">
+          Work in progress. This page will contain information about me and my interests.
+        </p>
+      </div>
+    </Layout>
+  )
 }
