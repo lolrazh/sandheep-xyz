@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 export interface Article {
   id: string;
@@ -26,7 +26,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
     <article className="group">
       <div className="flex justify-between items-baseline mb-1">
         <h2 className="text-lg md:text-xl font-medium mb-2 group-hover:opacity-80 transition-opacity">
-          <Link to={`/article/${article.id}`} className="article-link">
+          <Link href={`/article/${article.id}`} className="article-link">
             {article.title}
           </Link>
         </h2>

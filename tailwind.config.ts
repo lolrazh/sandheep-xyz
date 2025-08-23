@@ -65,8 +65,8 @@ export default {
 				},
 			},
 			fontFamily: {
-				'playfair': ['"Playfair Display"', 'serif'],
-				'lexend': ['"Lexend Deca"', 'sans-serif'],
+				'playfair': ['var(--font-playfair)', 'serif'],
+				'lexend': ['var(--font-lexend)', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

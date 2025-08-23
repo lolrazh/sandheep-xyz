@@ -1,17 +1,19 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import Layout from "../components/Layout";
+'use client'
 
-const NotFound = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+import { useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import Layout from "../src/components/Layout";
+
+export default function NotFound() {
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     console.error(
       "404 Error: User attempted to access non-existent route:",
-      location.pathname
+      pathname
     );
-  }, [location.pathname]);
+  }, [pathname]);
 
   return (
     <Layout>
@@ -21,7 +23,7 @@ const NotFound = () => {
           The page you're looking for has been misplaced in time.
         </p>
         <button 
-          onClick={() => navigate('/')} 
+          onClick={() => router.push('/')} 
           className="font-lexend text-sm uppercase tracking-wider text-foreground/70 hover:text-foreground transition-colors"
         >
           ← Return Home
@@ -29,6 +31,4 @@ const NotFound = () => {
       </div>
     </Layout>
   );
-};
-
-export default NotFound;
+}

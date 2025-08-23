@@ -1,5 +1,8 @@
+'use client'
+
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ReadingProgressBar } from '@/components/ReadingProgressBar';
 import { Moon, Sun } from 'lucide-react';
 
@@ -7,8 +10,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState<boolean>(false);
   const headerRef = useRef<HTMLElement | null>(null);
-  const location = useLocation();
-  const isArticlePage = location.pathname.startsWith('/article/');
+  const pathname = usePathname();
+  const isArticlePage = pathname.startsWith('/article/');
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => {
@@ -55,9 +58,9 @@ const Header = () => {
   }, []);
 
   const menuItems = [
-    { to: "/blog", label: "Blog" },
-    { to: "/commonplace", label: "Commonplace" },
-    { to: "/about", label: "About" },
+    { href: "/blog", label: "Blog" },
+    { href: "/commonplace", label: "Commonplace" },
+    { href: "/about", label: "About" },
   ];
 
   return (
@@ -67,7 +70,7 @@ const Header = () => {
         <div className="grid grid-cols-3 items-center">
           {/* Left: Brand */}
           <div className="col-start-2 md:col-start-auto justify-self-center md:justify-self-start">
-            <Link to="/" className="no-underline" onClick={closeMenu}>
+            <Link href="/" className="no-underline" onClick={closeMenu}>
               <h1 className="text-2xl md:text-3xl font-playfair font-medium tracking-tight">S/R</h1>
             </Link>
           </div>
@@ -75,7 +78,7 @@ const Header = () => {
           {/* Center: Desktop Nav */}
           <nav className="hidden md:flex justify-center items-center space-x-6 font-lexend text-sm uppercase tracking-wider justify-self-center">
             {menuItems.map((item) => (
-              <Link key={item.to} to={item.to} className="article-link">
+              <Link key={item.href} href={item.href} className="article-link">
                 {item.label}
               </Link>
             ))}
@@ -151,8 +154,8 @@ const Header = () => {
         <div className="flex flex-col items-center justify-center h-full space-y-8 font-lexend text-lg uppercase tracking-wider">
           {menuItems.map((item, index) => (
             <Link
-              key={item.to}
-              to={item.to}
+              key={item.href}
+              href={item.href}
               className={`article-link transition-all duration-300 ease-in-out ${
                 isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
