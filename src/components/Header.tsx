@@ -66,14 +66,14 @@ const Header = () => {
           {/* Left: Brand */}
           <div className="col-start-2 md:col-start-auto justify-self-center md:justify-self-start">
             <Link href="/" className="no-underline" onClick={closeMenu}>
-              <h1 className="text-2xl md:text-3xl font-playfair font-medium tracking-tight">S/R</h1>
+              <h1 className="text-2xl md:text-3xl font-playfair font-medium tracking-tight text-theme">S/R</h1>
             </Link>
           </div>
 
           {/* Center: Desktop Nav */}
           <nav className="hidden md:flex justify-center items-center space-x-6 font-lexend text-sm uppercase tracking-wider justify-self-center">
             {menuItems.map((item) => (
-              <Link key={item.href} href={item.href} className="article-link">
+              <Link key={item.href} href={item.href} className="article-link text-theme">
                 {item.label}
               </Link>
             ))}

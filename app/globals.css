@@ -150,6 +150,15 @@
     min-height: 100vh;
   }
 
+  /* Safari quirk: color transitions driven only by CSS variable changes may not animate.
+     Explicitly set body text color per theme so the property itself changes and transitions. */
+  html:not(.dark) body {
+    color: hsl(0 0% 10%);
+  }
+  .dark body {
+    color: hsl(30 15% 92%);
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-playfair font-bold;
   }
@@ -171,6 +180,31 @@
 }
 
 @layer components {
+  /* Force smooth color transitions for key text in Safari */
+  .text-theme {
+    transition-property: color;
+    transition-duration: 650ms;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  html:not(.dark) .text-theme {
+    color: hsl(0 0% 10%);
+  }
+  .dark .text-theme {
+    color: hsl(30 15% 92%);
+  }
+
+  .text-theme-muted {
+    transition-property: color;
+    transition-duration: 650ms;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  html:not(.dark) .text-theme-muted {
+    color: hsl(0 0% 10% / 0.6);
+  }
+  .dark .text-theme-muted {
+    color: hsl(30 15% 92% / 0.6);
+  }
+
   .film-grain {
     position: fixed;
     top: -50%;
@@ -213,5 +247,47 @@
 
   .article-link {
     @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-foreground after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+}
+
+@layer utilities {
+  /* Design-system fix: ensure text colors resolve to literal HSL per theme
+     so Safari animates color changes reliably. Covers common opacity variants. */
+
+  /* Base foreground */
+  html:not(.dark) .text-foreground { color: hsl(0 0% 10%) !important; }
+  .dark .text-foreground { color: hsl(30 15% 92%) !important; }
+
+  /* Opacity variants used in the app */
+  html:not(.dark) .text-foreground\/90 { color: hsl(0 0% 10% / 0.9) !important; }
+  .dark .text-foreground\/90 { color: hsl(30 15% 92% / 0.9) !important; }
+
+  html:not(.dark) .text-foreground\/80 { color: hsl(0 0% 10% / 0.8) !important; }
+  .dark .text-foreground\/80 { color: hsl(30 15% 92% / 0.8) !important; }
+
+  html:not(.dark) .text-foreground\/70 { color: hsl(0 0% 10% / 0.7) !important; }
+  .dark .text-foreground\/70 { color: hsl(30 15% 92% / 0.7) !important; }
+
+  html:not(.dark) .text-foreground\/60 { color: hsl(0 0% 10% / 0.6) !important; }
+  .dark .text-foreground\/60 { color: hsl(30 15% 92% / 0.6) !important; }
+
+  html:not(.dark) .text-foreground\/50 { color: hsl(0 0% 10% / 0.5) !important; }
+  .dark .text-foreground\/50 { color: hsl(30 15% 92% / 0.5) !important; }
+
+  /* Hover variant commonly used */
+  html:not(.dark) .hover\:text-foreground:hover { color: hsl(0 0% 10%) !important; }
+  .dark .hover\:text-foreground:hover { color: hsl(30 15% 92%) !important; }
+
+  /* Ensure color transitions apply to these during theme toggles */
+  .theme-transition :where(.text-foreground,
+                           .text-foreground\/90,
+                           .text-foreground\/80,
+                           .text-foreground\/70,
+                           .text-foreground\/60,
+                           .text-foreground\/50,
+                           .hover\:text-foreground:hover) {
+    transition-property: color;
+    transition-duration: 650ms;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
   }
 }

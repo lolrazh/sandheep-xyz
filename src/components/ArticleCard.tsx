@@ -26,7 +26,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
     <article className="group">
       <div className="flex justify-between items-baseline mb-1">
         <h2 className="text-lg md:text-xl font-medium mb-2 group-hover:opacity-80 transition-opacity">
-          <Link href={`/article/${article.id}`} className="article-link">
+          <Link href={`/article/${article.id}`} className="article-link text-theme">
             {article.title}
           </Link>
         </h2>

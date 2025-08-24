@@ -12,7 +12,7 @@ const YearSection: React.FC<YearSectionProps> = ({ year, articles }) => {
   return (
     <section className="mb-12">
       <div className="grid grid-cols-[5rem_1fr] gap-4">
-        <div className="text-foreground/60 text-xl font-lexend font-light">
+        <div className="text-theme-muted text-xl font-lexend font-light">
           {year}
         </div>
         <div>
