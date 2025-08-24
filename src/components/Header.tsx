@@ -73,7 +73,7 @@ const Header = () => {
           {/* Center: Desktop Nav */}
           <nav className="hidden md:flex justify-center items-center space-x-6 font-lexend text-sm uppercase tracking-wider justify-self-center">
             {menuItems.map((item) => (
-              <Link key={item.href} href={item.href} className="article-link text-theme">
+              <Link key={item.href} href={item.href} className="article-link text-theme px-1 -mx-1 py-2">
                 {item.label}
               </Link>
             ))}
@@ -83,7 +83,7 @@ const Header = () => {
           <div className="justify-self-end flex items-center gap-2">
             <button
               onClick={toggleTheme}
-              className="inline-flex items-center justify-center h-10 w-10 rounded-md text-foreground/90 hover:text-foreground transition-colors"
+              className="inline-flex items-center justify-center h-11 w-11 rounded-md text-foreground/90 hover:text-foreground active:opacity-70 transition-colors"
               aria-label={!mounted ? 'Toggle theme' : theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
               title={!mounted ? 'Theme' : theme === 'dark' ? 'Light mode' : 'Dark mode'}
             >
@@ -99,7 +99,7 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md text-foreground/90 hover:text-foreground transition-colors group"
+              className="md:hidden inline-flex items-center justify-center h-11 w-11 rounded-md text-foreground/90 hover:text-foreground active:opacity-70 transition-colors group"
               aria-expanded={isMenuOpen}
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >

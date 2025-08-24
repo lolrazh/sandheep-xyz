@@ -265,6 +265,14 @@
       transform-origin: bottom left;
     }
   }
+
+  /* Tactile feedback */
+  .article-link:active { opacity: 0.8; }
+
+  /* Larger tap target on touch */
+  @media (hover: none) {
+    .article-link { padding-top: 6px; padding-bottom: 6px; }
+  }
 }
 
 @layer utilities {
