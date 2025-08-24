@@ -34,7 +34,12 @@ const Header = () => {
   }, []);
 
   const toggleTheme = () => {
+    document.documentElement.classList.add('theme-transition');
     setTheme(theme === 'dark' ? 'light' : 'dark');
+    // Remove transition class after transition completes
+    setTimeout(() => {
+      document.documentElement.classList.remove('theme-transition');
+    }, 700); // Slightly longer than CSS transition
   };
 
   useEffect(() => {
@@ -79,8 +84,8 @@ const Header = () => {
             <button
               onClick={toggleTheme}
               className="inline-flex items-center justify-center h-10 w-10 rounded-md text-foreground/90 hover:text-foreground transition-colors"
-              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-              title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
+              aria-label={!mounted ? 'Toggle theme' : theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              title={!mounted ? 'Theme' : theme === 'dark' ? 'Light mode' : 'Dark mode'}
             >
               {!mounted ? (
                 <div className="w-[18px] h-[18px]" />
