@@ -108,6 +108,10 @@
     --border-subtle: 30 20% 86% / 0.4;
     --border-muted: 30 20% 86% / 0.6;  
     --border-strong: 30 20% 86% / 0.8;
+    
+    /* Skeleton tokens - tuned for linen theme (light) */
+    --skeleton-base: 30 20% 86%;  /* close to border/input, slightly darker than background */
+    --skeleton-contrast: 30 12% 70%; /* for subtle separators/shimmer if needed */
   }
 
   .dark {
@@ -158,6 +162,10 @@
     --border-subtle: 30 15% 18% / 0.4;
     --border-muted: 30 15% 18% / 0.6;  
     --border-strong: 30 15% 18% / 0.8;
+
+    /* Skeleton tokens - tuned for dark warm browns */
+    --skeleton-base: 30 15% 18%;  /* aligns with border/input in dark */
+    --skeleton-contrast: 30 8% 28%;
   }
 
   /* Smooth theme transition helper */
