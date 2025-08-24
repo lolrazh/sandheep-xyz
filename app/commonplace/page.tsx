@@ -94,8 +94,8 @@ export default function CommonplacePage() {
           {links.map((link, index) => (
             <React.Fragment key={index}>
               <article className="group py-4">
-                <div className="flex justify-between items-baseline">
-                  <h2 className="text-base md:text-lg font-medium group-hover:opacity-80 transition-opacity">
+                <div className="flex justify-between items-baseline gap-3 min-w-0">
+                  <h2 className="text-base md:text-lg font-medium group-hover:opacity-80 transition-opacity flex-1 min-w-0">
                     <a
                       href={link.url}
                       target="_blank"
@@ -105,7 +105,7 @@ export default function CommonplacePage() {
                       {link.title}
                     </a>
                   </h2>
-                  <span className="font-mono text-xs text-foreground/60 whitespace-nowrap pl-4">
+                  <span className="font-mono text-xs text-foreground/60 whitespace-nowrap shrink-0 pl-3 text-right">
                     {new URL(link.url).hostname.replace('www.', '')}
                   </span>
                 </div>
