@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { getArticleById, Article } from '../data/articles';
 import { getArticleContent } from '../utils/markdown';
 import ReactMarkdown from 'react-markdown';
@@ -65,12 +66,12 @@ export default async function ServerArticleDetail({ id }: ServerArticleDetailPro
         </div>
         
         <div className="mt-12 pt-6 border-t border-border/10">
-          <a 
+          <Link 
             href="/blog" 
             className="font-lexend text-sm uppercase tracking-wider text-foreground/70 hover:text-foreground transition-colors"
           >
             ← Back to writings
-          </a>
+          </Link>
         </div>
       </article>
     </Layout>

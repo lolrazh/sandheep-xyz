@@ -3,12 +3,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useTheme } from 'next-themes';
 import { ReadingProgressBar } from '@/components/ReadingProgressBar';
 import { Moon, Sun } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState<boolean>(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
   const headerRef = useRef<HTMLElement | null>(null);
   const pathname = usePathname();
   const isArticlePage = pathname.startsWith('/article/');
@@ -26,25 +28,13 @@ const Header = () => {
     document.body.style.overflow = 'unset';
   };
 
-  // Initialize and persist theme
+  // Handle mounting to prevent hydration mismatch
   useEffect(() => {
-    const stored = localStorage.getItem('theme');
-    const shouldBeDark = stored === 'dark';
-    setIsDark(shouldBeDark);
-    document.documentElement.classList.toggle('dark', shouldBeDark);
+    setMounted(true);
   }, []);
 
   const toggleTheme = () => {
-    setIsDark((prev) => {
-      const next = !prev;
-      document.documentElement.classList.add('theme-transition');
-      document.documentElement.classList.toggle('dark', next);
-      window.setTimeout(() => {
-        document.documentElement.classList.remove('theme-transition');
-      }, 250);
-      localStorage.setItem('theme', next ? 'dark' : 'light');
-      return next;
-    });
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
   useEffect(() => {
@@ -89,10 +79,16 @@ const Header = () => {
             <button
               onClick={toggleTheme}
               className="inline-flex items-center justify-center h-10 w-10 rounded-md text-foreground/90 hover:text-foreground transition-colors"
-              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-              title={isDark ? 'Light mode' : 'Dark mode'}
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
             >
-              {isDark ? <Sun size={18} /> : <Moon size={18} />}
+              {!mounted ? (
+                <div className="w-[18px] h-[18px]" />
+              ) : theme === 'dark' ? (
+                <Sun size={18} />
+              ) : (
+                <Moon size={18} />
+              )}
             </button>
 
             {/* Mobile Menu Button */}
