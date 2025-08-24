@@ -290,4 +290,22 @@
     transition-duration: 650ms;
     transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
   }
+
+  /* Article links: set explicit color + animate */
+  html:not(.dark) .article-link { color: hsl(0 0% 10%) !important; }
+  .dark .article-link { color: hsl(30 15% 92%) !important; }
+  .theme-transition :where(.article-link) {
+    transition-property: color;
+    transition-duration: 650ms;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* Headings in main content: explicit color + animate */
+  html:not(.dark) main :where(h1,h2,h3,h4,h5,h6) { color: hsl(0 0% 10%) !important; }
+  .dark main :where(h1,h2,h3,h4,h5,h6) { color: hsl(30 15% 92%) !important; }
+  .theme-transition main :where(h1,h2,h3,h4,h5,h6) {
+    transition-property: color;
+    transition-duration: 650ms;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  }
 }
