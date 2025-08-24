@@ -68,7 +68,7 @@ export default function BlogPage() {
             <React.Fragment key={year}>
               {idx > 0 && (
                 <div className="my-4 relative z-[160]">
-                  <Separator className="bg-foreground/60" />
+                  <Separator className="bg-border/60" />
                 </div>
               )}
               <YearSection 
