@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
@@ -144,30 +145,35 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay (below sticky header) */}
-      <div
-        className={`fixed inset-x-0 top-[var(--header-height,0px)] bottom-[var(--footer-height,0px)] z-[var(--z-modal)] md:hidden transition-opacity duration-md ease-standard bg-background ${
-          isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
-        role="dialog"
-        aria-modal="true"
-      >
-        <div className="flex flex-col items-center justify-center h-full space-y-8 font-lexend text-lg uppercase tracking-wider">
-          {menuItems.map((item, index) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`article-link transition-all duration-md ease-standard ${
-                isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+      {/* Mobile Menu Overlay via portal to escape header stacking context */}
+      {mounted && typeof window !== 'undefined'
+        ? createPortal(
+            <div
+              className={`fixed inset-x-0 top-[var(--header-height,0px)] bottom-0 z-[var(--z-menu)] md:hidden transition-opacity duration-md ease-standard bg-background ${
+                isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
               }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-              onClick={closeMenu}
+              role="dialog"
+              aria-modal="true"
             >
-              {item.label}
-            </Link>
-          ))}
-        </div>
-      </div>
+              <div className="flex flex-col items-center justify-center h-full space-y-8 font-lexend text-lg uppercase tracking-wider">
+                {menuItems.map((item, index) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`article-link transition-all duration-md ease-standard ${
+                      isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                    }`}
+                    style={{ transitionDelay: `${index * 100}ms` }}
+                    onClick={closeMenu}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>,
+            document.body
+          )
+        : null}
     </header>
   );
 };

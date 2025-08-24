@@ -111,7 +111,7 @@ export default function CommonplacePage() {
                 </div>
               </article>
               {index < links.length - 1 && (
-                <Separator className="bg-border/60 relative z-[160]" />
+                <Separator className="bg-border/60" />
               )}
             </React.Fragment>
           ))}
