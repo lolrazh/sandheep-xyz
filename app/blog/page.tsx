@@ -67,8 +67,8 @@ export default function BlogPage() {
           {sortedYears.map((year, idx) => (
             <React.Fragment key={year}>
               {idx > 0 && (
-                <div className="my-4 relative z-[160]">
-                  <Separator className="bg-border/80" />
+                <div className="my-4 relative z-[var(--z-header)]">
+                  <Separator className="separator-strong" />
                 </div>
               )}
               <YearSection 

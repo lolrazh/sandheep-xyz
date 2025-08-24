@@ -59,7 +59,7 @@ const Header = () => {
   ];
 
   return (
-    <header ref={headerRef} className="sticky top-0 z-[160] bg-background">
+    <header ref={headerRef} className="sticky top-0 z-[var(--z-header)] bg-background">
       <div className="container mx-auto max-w-4xl px-2 md:px-4 py-6">
         {/* 3-column layout: left brand, center nav, right controls */}
         <div className="grid grid-cols-3 items-center">
@@ -83,7 +83,7 @@ const Header = () => {
           <div className="justify-self-end flex items-center gap-2">
             <button
               onClick={toggleTheme}
-              className="inline-flex items-center justify-center h-11 w-11 rounded-md text-foreground/90 hover:text-foreground active:opacity-70 transition-colors"
+              className="inline-flex items-center justify-center h-11 w-11 rounded-md text-foreground/90 hover:text-foreground active:opacity-[var(--opacity-active)] transition-colors duration-sm"
               aria-label={!mounted ? 'Toggle theme' : theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
               title={!mounted ? 'Theme' : theme === 'dark' ? 'Light mode' : 'Dark mode'}
             >
@@ -99,7 +99,7 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              className="md:hidden inline-flex items-center justify-center h-11 w-11 rounded-md text-foreground/90 hover:text-foreground active:opacity-70 transition-colors group"
+              className="md:hidden inline-flex items-center justify-center h-11 w-11 rounded-md text-foreground/90 hover:text-foreground active:opacity-[var(--opacity-active)] transition-colors duration-sm group"
               aria-expanded={isMenuOpen}
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
@@ -118,15 +118,15 @@ const Header = () => {
               >
                 <path
                   d="M4 12L20 12"
-                  className="origin-center -translate-y-[7px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-x-0 group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[315deg]"
+                  className="origin-center -translate-y-[7px] transition-all duration-md ease-standard group-aria-expanded:translate-x-0 group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[315deg]"
                 />
                 <path
                   d="M4 12H20"
-                  className="origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] group-aria-expanded:rotate-45"
+                  className="origin-center transition-all duration-md ease-standard group-aria-expanded:rotate-45"
                 />
                 <path
                   d="M4 12H20"
-                  className="origin-center translate-y-[7px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[135deg]"
+                  className="origin-center translate-y-[7px] transition-all duration-md ease-standard group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[135deg]"
                 />
               </svg>
             </button>
@@ -146,7 +146,7 @@ const Header = () => {
 
       {/* Mobile Menu Overlay (below sticky header) */}
       <div
-        className={`fixed inset-x-0 top-[var(--header-height,0px)] bottom-0 z-[155] md:hidden transition-opacity duration-300 ease-in-out bg-background ${
+        className={`fixed inset-x-0 top-[var(--header-height,0px)] bottom-0 z-[var(--z-modal)] md:hidden transition-opacity duration-md ease-standard bg-background ${
           isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         role="dialog"
@@ -157,7 +157,7 @@ const Header = () => {
             <Link
               key={item.href}
               href={item.href}
-              className={`article-link transition-all duration-300 ease-in-out ${
+              className={`article-link transition-all duration-md ease-standard ${
                 isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
