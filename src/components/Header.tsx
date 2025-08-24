@@ -146,7 +146,7 @@ const Header = () => {
 
       {/* Mobile Menu Overlay (below sticky header) */}
       <div
-        className={`fixed inset-x-0 top-[var(--header-height,0px)] bottom-0 z-[var(--z-modal)] md:hidden transition-opacity duration-md ease-standard bg-background ${
+        className={`fixed inset-x-0 top-[var(--header-height,0px)] bottom-[var(--footer-height,0px)] z-[var(--z-modal)] md:hidden transition-opacity duration-md ease-standard bg-background ${
           isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         role="dialog"

@@ -86,8 +86,9 @@
     /* Z-Index Scale */
     --z-dropdown: 50;
     --z-overlay: 100;
-    --z-header: 160;
+    --z-content: 140;
     --z-modal: 150;
+    --z-header: 160;
     --z-noise: 170;
     --z-tooltip: 200;
 

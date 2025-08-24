@@ -1,4 +1,6 @@
-import React from 'react';
+'use client'
+
+import React, { useEffect, useRef } from 'react';
 import Header from './Header';
 import { Instagram, Linkedin, Github, Twitter, Mail } from 'lucide-react';
 
@@ -7,6 +9,17 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const footerRef = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    const updateFooterHeight = () => {
+      const height = footerRef.current?.offsetHeight || 0;
+      document.documentElement.style.setProperty('--footer-height', `${height}px`);
+    };
+    updateFooterHeight();
+    window.addEventListener('resize', updateFooterHeight);
+    return () => window.removeEventListener('resize', updateFooterHeight);
+  }, []);
+
   const socialLinks = [
     { icon: Mail, url: 'mailto:rajkumar.sandheep@gmail.com', label: 'Email' },
     { icon: Linkedin, url: 'https://linkedin.com/in/sandheeprajkumar', label: 'LinkedIn' },
@@ -22,7 +35,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <main className="container mx-auto max-w-4xl px-4 pb-12 flex-1">
         {children}
       </main>
-      <footer className="container mx-auto max-w-4xl px-4 py-8 border-t border-border/60 relative z-[var(--z-header)]">
+      <footer ref={footerRef} className="container mx-auto max-w-4xl px-4 py-8 border-t border-border/60 relative z-[var(--z-header)]">
         <div className="flex flex-col md:flex-row justify-between items-center">
                       <p className="font-lexend text-xs uppercase tracking-wider text-foreground/50 mb-3 md:mb-0">
             © {new Date().getFullYear()} Sandheep Rajkumar
