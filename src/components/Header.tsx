@@ -39,7 +39,7 @@ const Header = () => {
     // Remove transition class after transition completes
     setTimeout(() => {
       document.documentElement.classList.remove('theme-transition');
-    }, 700); // Slightly longer than CSS transition
+    }, 350); // Slightly longer than CSS transition (320ms)
   };
 
   useEffect(() => {
