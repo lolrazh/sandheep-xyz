@@ -150,6 +150,11 @@
     min-height: 100vh;
   }
 
+  /* Slightly smaller base type on small screens */
+  @media (max-width: 640px) {
+    html { font-size: 15px; }
+  }
+
   /* Safari quirk: color transitions driven only by CSS variable changes may not animate.
      Explicitly set body text color per theme so the property itself changes and transitions. */
   html:not(.dark) body {

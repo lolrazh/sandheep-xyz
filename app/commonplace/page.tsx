@@ -89,7 +89,7 @@ export default function CommonplacePage() {
   return (
     <Layout>
       <div className="mx-auto max-w-2xl py-10">
-        <h1 className="text-3xl font-playfair font-medium mb-10">Commonplace Book</h1>
+        <h1 className="text-2xl md:text-3xl font-playfair font-medium mb-10">Commonplace Book</h1>
         <div className="space-y-0">
           {links.map((link, index) => (
             <React.Fragment key={index}>
