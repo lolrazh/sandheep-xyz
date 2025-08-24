@@ -1,8 +1,10 @@
+import React from 'react'
 import { Metadata } from 'next'
 import { buildTitle, canonical, defaultOgImage, buildWebPageSchema } from '../../src/lib/seo'
 import Layout from '../../src/components/Layout'
 import YearSection from '../../src/components/YearSection'
 import { articles } from '../../src/data/articles'
+import { Separator } from '../../src/components/ui/separator'
 
 export const metadata: Metadata = {
   title: buildTitle('Writings'),
@@ -61,13 +63,19 @@ export default function BlogPage() {
     <Layout>
       <div className="mx-auto max-w-2xl py-10">
         <h1 className="text-2xl md:text-3xl font-playfair font-medium mb-10 text-theme">Writings</h1>
-        <div className="space-y-8">
-          {sortedYears.map((year) => (
-            <YearSection 
-              key={year} 
-              year={year} 
-              articles={articlesByYear[year] || []} 
-            />
+        <div>
+          {sortedYears.map((year, idx) => (
+            <React.Fragment key={year}>
+              {idx > 0 && (
+                <div className="my-4 relative z-[160]">
+                  <Separator className="bg-foreground/60" />
+                </div>
+              )}
+              <YearSection 
+                year={year} 
+                articles={articlesByYear[year] || []} 
+              />
+            </React.Fragment>
           ))}
         </div>
       </div>

@@ -59,7 +59,7 @@ const Header = () => {
   ];
 
   return (
-    <header ref={headerRef} className="sticky top-0 z-[160] bg-background border-b border-border/10">
+    <header ref={headerRef} className="sticky top-0 z-[160] bg-background border-b border-border/40">
       <div className="container mx-auto max-w-4xl px-2 md:px-4 py-6">
         {/* 3-column layout: left brand, center nav, right controls */}
         <div className="grid grid-cols-3 items-center">
