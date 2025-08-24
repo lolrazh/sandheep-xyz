@@ -74,7 +74,7 @@ const Header = () => {
           {/* Center: Desktop Nav */}
           <nav className="hidden md:flex justify-center items-center space-x-6 font-lexend text-sm uppercase tracking-wider justify-self-center">
             {menuItems.map((item) => (
-              <Link key={item.href} href={item.href} className="article-link text-theme px-1 -mx-1 py-2">
+              <Link key={item.href} href={item.href} prefetch className="article-link text-theme px-1 -mx-1 py-2">
                 {item.label}
               </Link>
             ))}
