@@ -44,6 +44,16 @@ export default function BlogPage() {
     return acc;
   }, {} as Record<number, typeof articles>);
 
+  // Sort articles within each year by date (most recent first)
+  Object.keys(articlesByYear).forEach(year => {
+    articlesByYear[Number(year)].sort((a, b) => {
+      // Convert date strings to Date objects for proper comparison
+      const dateA = new Date(a.fullDate);
+      const dateB = new Date(b.fullDate);
+      return dateB.getTime() - dateA.getTime(); // Descending order (newest first)
+    });
+  });
+
   // Get sorted years (descending)
   const sortedYears = Object.keys(articlesByYear).map(Number).sort((a, b) => b - a);
 

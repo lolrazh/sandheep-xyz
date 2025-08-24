@@ -65,9 +65,12 @@ export default async function ServerArticleDetail({ id }: ServerArticleDetailPro
         </div>
         
         <div className="mt-12 pt-6 border-t border-border/10">
-          <p className="font-lexend text-xs uppercase tracking-wider text-foreground/50 mb-3 md:mb-0">
-            More articles
-          </p>
+          <a 
+            href="/blog" 
+            className="font-lexend text-sm uppercase tracking-wider text-foreground/70 hover:text-foreground transition-colors"
+          >
+            ← Back to writings
+          </a>
         </div>
       </article>
     </Layout>
