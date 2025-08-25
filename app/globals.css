@@ -98,6 +98,8 @@
     --opacity-active: 0.7;
     --opacity-disabled: 0.5;
     --opacity-muted: 0.6;
+    /* Visual noise (film grain) */
+    --noise-opacity: 0.35;
 
     /* OpenGraph & Layout Constants */
     --og-width: 1200;
@@ -166,6 +168,8 @@
     /* Skeleton tokens - tuned for dark warm browns */
     --skeleton-base: 30 15% 18%;  /* aligns with border/input in dark */
     --skeleton-contrast: 30 8% 28%;
+    /* Visual noise (film grain) */
+    --noise-opacity: 0.28;
   }
 
   /* Smooth theme transition helper */
@@ -262,7 +266,7 @@
     background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
     background-repeat: repeat;
     animation: film-grain 0.2s steps(1) infinite;
-    opacity: var(--opacity-muted);
+    opacity: var(--noise-opacity);
     z-index: var(--z-noise);
     pointer-events: none;
   }
