@@ -54,6 +54,7 @@
     --ease-in: cubic-bezier(0.4, 0, 1, 1);
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-standard: cubic-bezier(.2,.8,.2,1);
+    --ease-theme: cubic-bezier(0.23, 1, 0.32, 1);
 
     --duration-xxs: 120ms;
     --duration-xs: 160ms;
@@ -61,6 +62,7 @@
     --duration-md: 240ms;
     --duration-lg: 320ms;
     --duration-xl: 400ms;
+    --duration-theme: 320ms;
 
     /* Shadow tokens */
     --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.06);
@@ -80,6 +82,38 @@
     --space-6: 32px;
     --space-7: 48px;
     --space-8: 64px;
+
+    /* Z-Index Scale */
+    --z-dropdown: 50;
+    --z-overlay: 100;
+    --z-content: 140;
+    --z-modal: 150;
+    --z-header: 160;
+    --z-noise: 1000;
+    --z-menu: 190;
+    --z-tooltip: 200;
+
+    /* Interaction States */
+    --opacity-hover: 0.8;
+    --opacity-active: 0.7;
+    --opacity-disabled: 0.5;
+    --opacity-muted: 0.6;
+    /* Visual noise (film grain) */
+    --noise-opacity: 0.35;
+
+    /* OpenGraph & Layout Constants */
+    --og-width: 1200;
+    --og-height: 630;
+    --mobile-font-scale: 0.9375; /* 15/16 */
+    
+    /* Semantic Border Variants */
+    --border-subtle: 30 20% 86% / 0.4;
+    --border-muted: 30 20% 86% / 0.6;  
+    --border-strong: 30 20% 86% / 0.8;
+    
+    /* Skeleton tokens - tuned for linen theme (light) */
+    --skeleton-base: 30 20% 86%;  /* close to border/input, slightly darker than background */
+    --skeleton-contrast: 30 12% 70%; /* for subtle separators/shimmer if needed */
   }
 
   .dark {
@@ -125,13 +159,24 @@
     --sidebar-accent-foreground: 30 15% 88%;
     --sidebar-border: 30 15% 18%;
     --sidebar-ring: 30 8% 75%;
+
+    /* Dark mode semantic border variants */
+    --border-subtle: 30 15% 18% / 0.4;
+    --border-muted: 30 15% 18% / 0.6;  
+    --border-strong: 30 15% 18% / 0.8;
+
+    /* Skeleton tokens - tuned for dark warm browns */
+    --skeleton-base: 30 15% 18%;  /* aligns with border/input in dark */
+    --skeleton-contrast: 30 8% 28%;
+    /* Visual noise (film grain) */
+    --noise-opacity: 0.28;
   }
 
   /* Smooth theme transition helper */
   .theme-transition, .theme-transition * {
     transition-property: background-color, color, border-color, fill, stroke, box-shadow;
-    transition-duration: 650ms;
-    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    transition-duration: var(--duration-theme);
+    transition-timing-function: var(--ease-theme);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -152,7 +197,7 @@
 
   /* Slightly smaller base type on small screens */
   @media (max-width: 640px) {
-    html { font-size: 15px; }
+    html { font-size: calc(16px * var(--mobile-font-scale)); }
   }
 
   /* Safari quirk: color transitions driven only by CSS variable changes may not animate.
@@ -188,8 +233,8 @@
   /* Force smooth color transitions for key text in Safari */
   .text-theme {
     transition-property: color;
-    transition-duration: 650ms;
-    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    transition-duration: var(--duration-theme);
+    transition-timing-function: var(--ease-theme);
   }
   html:not(.dark) .text-theme {
     color: hsl(0 0% 10%);
@@ -200,8 +245,8 @@
 
   .text-theme-muted {
     transition-property: color;
-    transition-duration: 650ms;
-    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    transition-duration: var(--duration-theme);
+    transition-timing-function: var(--ease-theme);
   }
   html:not(.dark) .text-theme-muted {
     color: hsl(0 0% 10% / 0.6);
@@ -221,8 +266,8 @@
     background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
     background-repeat: repeat;
     animation: film-grain 0.2s steps(1) infinite;
-    opacity: 0.15;
-    z-index: 100;
+    opacity: var(--noise-opacity);
+    z-index: var(--z-noise);
     pointer-events: none;
   }
 
@@ -267,12 +312,17 @@
   }
 
   /* Tactile feedback */
-  .article-link:active { opacity: 0.8; }
+  .article-link:active { opacity: var(--opacity-hover); }
 
   /* Larger tap target on touch */
   @media (hover: none) {
     .article-link { padding-top: 6px; padding-bottom: 6px; }
   }
+
+  /* Semantic separators using design tokens */
+  .separator-subtle { @apply bg-[hsl(var(--border-subtle))]; }
+  .separator-muted { @apply bg-[hsl(var(--border-muted))]; }  
+  .separator-strong { @apply bg-[hsl(var(--border-strong))]; }
 }
 
 @layer utilities {
@@ -312,8 +362,8 @@
                            .text-foreground\/50,
                            .hover\:text-foreground:hover) {
     transition-property: color;
-    transition-duration: 650ms;
-    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    transition-duration: var(--duration-theme);
+    transition-timing-function: var(--ease-theme);
   }
 
   /* Disable hover-only effects on touch devices */
@@ -331,8 +381,8 @@
   .dark .article-link { color: hsl(30 15% 92%) !important; }
   .theme-transition :where(.article-link) {
     transition-property: color;
-    transition-duration: 650ms;
-    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    transition-duration: var(--duration-theme);
+    transition-timing-function: var(--ease-theme);
   }
 
   /* Headings in main content: explicit color + animate */
@@ -340,7 +390,22 @@
   .dark main :where(h1,h2,h3,h4,h5,h6) { color: hsl(30 15% 92%) !important; }
   .theme-transition main :where(h1,h2,h3,h4,h5,h6) {
     transition-property: color;
-    transition-duration: 650ms;
-    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    transition-duration: var(--duration-theme);
+    transition-timing-function: var(--ease-theme);
+  }
+
+  /* Prose content: override default prose colors with theme-aware colors */
+  html:not(.dark) .prose { color: hsl(0 0% 10%) !important; }
+  .dark .prose { color: hsl(30 15% 92%) !important; }
+  
+  html:not(.dark) .prose :where(p,li,blockquote,code,pre) { color: hsl(0 0% 10%) !important; }
+  .dark .prose :where(p,li,blockquote,code,pre) { color: hsl(30 15% 92%) !important; }
+  
+  /* Prose transition animations */
+  .theme-transition .prose,
+  .theme-transition .prose :where(p,li,blockquote,code,pre,h1,h2,h3,h4,h5,h6) {
+    transition-property: color;
+    transition-duration: var(--duration-theme);
+    transition-timing-function: var(--ease-theme);
   }
 }

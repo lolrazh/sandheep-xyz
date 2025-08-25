@@ -1,11 +1,17 @@
+import { Skeleton } from "../src/components/ui/skeleton"
+
 export default function Loading() {
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-2 border-border/20 border-t-foreground mx-auto"></div>
-        <p className="mt-4 font-lexend text-sm uppercase tracking-wider text-foreground/60">
-          Loading...
-        </p>
+    <div className="container mx-auto max-w-4xl px-4 py-10">
+      {/* Generic page skeleton: title + a few blocks */}
+      <Skeleton className="h-8 w-2/3 mb-6" />
+      <div className="space-y-3">
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-11/12" />
+        <Skeleton className="h-4 w-10/12" />
+        <div className="h-2" />
+        <Skeleton className="h-4 w-9/12" />
+        <Skeleton className="h-4 w-8/12" />
       </div>
     </div>
   )

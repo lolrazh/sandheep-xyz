@@ -1,13 +1,25 @@
-import React from 'react';
+'use client'
+
+import React, { useEffect, useRef } from 'react';
 import Header from './Header';
 import { Instagram, Linkedin, Github, Twitter, Mail } from 'lucide-react';
-// import { Link } from 'react-router-dom';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const footerRef = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    const updateFooterHeight = () => {
+      const height = footerRef.current?.offsetHeight || 0;
+      document.documentElement.style.setProperty('--footer-height', `${height}px`);
+    };
+    updateFooterHeight();
+    window.addEventListener('resize', updateFooterHeight);
+    return () => window.removeEventListener('resize', updateFooterHeight);
+  }, []);
+
   const socialLinks = [
     { icon: Mail, url: 'mailto:rajkumar.sandheep@gmail.com', label: 'Email' },
     { icon: Linkedin, url: 'https://linkedin.com/in/sandheeprajkumar', label: 'LinkedIn' },
@@ -17,13 +29,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-background relative flex flex-col">
+    <div className="min-h-screen bg-background relative flex flex-col theme-transition">
       <div className="film-grain"></div>
       <Header />
       <main className="container mx-auto max-w-4xl px-4 pb-12 flex-1">
         {children}
       </main>
-      <footer className="container mx-auto max-w-4xl px-4 py-8 border-t border-border/60 relative z-[160]">
+      <footer ref={footerRef} className="container mx-auto max-w-4xl px-4 py-8 border-t border-border/60">
         <div className="flex flex-col md:flex-row justify-between items-center">
                       <p className="font-lexend text-xs uppercase tracking-wider text-foreground/50 mb-3 md:mb-0">
             © {new Date().getFullYear()} Sandheep Rajkumar
