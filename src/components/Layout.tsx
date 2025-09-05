@@ -37,7 +37,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </main>
       <footer ref={footerRef} className="container mx-auto max-w-4xl px-4 py-8 border-t border-border/60">
         <div className="flex flex-col md:flex-row justify-between items-center">
-                      <p className="font-lexend text-xs uppercase tracking-wider text-foreground/50 mb-3 md:mb-0">
+                      <p className="text-xs uppercase tracking-wider text-foreground/50 mb-3 md:mb-0">
             © {new Date().getFullYear()} Sandheep Rajkumar
           </p>
           <div className="flex space-x-4">

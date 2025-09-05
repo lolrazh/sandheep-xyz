@@ -62,7 +62,7 @@ export default function BlogPage() {
   return (
     <Layout>
       <div className="mx-auto max-w-2xl py-10">
-        <h1 className="text-2xl md:text-3xl font-playfair font-medium mb-10 text-theme">Writings</h1>
+        <h1 className="text-2xl md:text-3xl font-medium mb-10 text-theme">Writings</h1>
         <div>
           {sortedYears.map((year, idx) => (
             <React.Fragment key={year}>
