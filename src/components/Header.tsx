@@ -67,12 +67,12 @@ const Header = () => {
           {/* Left: Brand */}
           <div className="col-start-2 md:col-start-auto justify-self-center md:justify-self-start">
             <Link href="/" className="no-underline" onClick={closeMenu}>
-              <h1 className="text-2xl md:text-3xl font-playfair font-medium tracking-tight text-theme">S/R</h1>
+              <h1 className="text-2xl md:text-3xl font-medium tracking-tight text-theme">S/R</h1>
             </Link>
           </div>
 
           {/* Center: Desktop Nav */}
-          <nav className="hidden md:flex justify-center items-center space-x-6 font-lexend text-sm uppercase tracking-wider justify-self-center">
+          <nav className="hidden md:flex justify-center items-center space-x-6 text-sm uppercase tracking-wider justify-self-center">
             {menuItems.map((item) => (
               <Link key={item.href} href={item.href} prefetch className="article-link text-theme px-1 -mx-1 py-2">
                 {item.label}
@@ -155,7 +155,7 @@ const Header = () => {
               role="dialog"
               aria-modal="true"
             >
-              <div className="flex flex-col items-center justify-center h-full space-y-8 font-lexend text-lg uppercase tracking-wider">
+              <div className="flex flex-col items-center justify-center h-full space-y-8 text-lg uppercase tracking-wider">
                 {menuItems.map((item, index) => (
                   <Link
                     key={item.href}

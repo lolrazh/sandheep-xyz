@@ -31,7 +31,7 @@ class ErrorBoundary extends Component<Props, State> {
           </p>
           <button
             onClick={() => window.location.reload()}
-            className="font-lexend text-sm uppercase tracking-wider text-foreground/70 hover:text-foreground transition-colors"
+            className="text-sm uppercase tracking-wider text-foreground/70 hover:text-foreground transition-colors"
           >
             ↻ Refresh Page
           </button>

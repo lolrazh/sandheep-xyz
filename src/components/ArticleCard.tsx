@@ -30,7 +30,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
             {article.title}
           </Link>
         </h2>
-        <span className="font-lexend text-sm text-foreground/60 whitespace-nowrap shrink-0 pl-2 text-right">
+        <span className="text-sm text-foreground/60 whitespace-nowrap shrink-0 pl-2 text-right">
           {formatDate(article.date)}
         </span>
       </div>
