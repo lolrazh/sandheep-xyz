@@ -5,6 +5,7 @@ import Layout from '../../src/components/Layout'
 import YearSection from '../../src/components/YearSection'
 import { articles } from '../../src/data/articles'
 import { Separator } from '../../src/components/ui/separator'
+import { TypingHeading } from '@/components/TypingHeading'
 
 export const metadata: Metadata = {
   title: buildTitle('Writings'),
@@ -62,7 +63,9 @@ export default function BlogPage() {
   return (
     <Layout>
       <div className="mx-auto max-w-2xl py-10">
-        <h1 className="text-2xl md:text-3xl font-medium mb-10 text-theme">Writings</h1>
+        <TypingHeading className="text-2xl md:text-3xl font-medium mb-10 text-theme">
+          Writings
+        </TypingHeading>
         <div>
           {sortedYears.map((year, idx) => (
             <React.Fragment key={year}>

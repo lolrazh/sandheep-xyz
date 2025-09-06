@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import { OptimizedImage } from './OptimizedImage';
 import { Separator } from "@/components/ui/separator";
 import Layout from './Layout';
+import { TypingHeading } from '@/components/TypingHeading';
 
 interface ServerArticleDetailProps {
   id: string;
@@ -44,7 +45,9 @@ export default async function ServerArticleDetail({ id }: ServerArticleDetailPro
     <Layout>
       <article className="mx-auto max-w-3xl px-4">
         <div className="mt-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">{article.title}</h1>
+          <TypingHeading className="text-3xl md:text-4xl font-bold mb-4">
+            {article.title}
+          </TypingHeading>
           <div className="mb-6">
             <span className="text-sm uppercase tracking-wider text-foreground/60">
               SANDHEEP RAJKUMAR | {article.fullDate}
