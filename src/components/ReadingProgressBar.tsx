@@ -17,12 +17,14 @@ export function ReadingProgressBar({ withinHeader = false, active = true }: Read
     <div className={containerClass} aria-hidden="true">
       <div
         className={[
-          "h-full bg-foreground will-change-[width]",
-          active ? "transition-[width] duration-xxs ease-linear" : "transition-none",
+          "h-full bg-foreground origin-left will-change-transform",
+          active
+            ? "md:transition-transform md:duration-75 md:ease-linear"
+            : "transition-none",
           active ? (progress > 0 ? "opacity-100" : "opacity-0") : "opacity-0",
           "motion-reduce:transition-none",
         ].join(" ")}
-        style={{ width: `${active ? progress * 100 : 0}%` }}
+        style={{ transform: `scaleX(${active ? progress : 0})` }}
       />
     </div>
   );
