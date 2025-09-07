@@ -409,3 +409,13 @@
     transition-timing-function: var(--ease-theme);
   }
 }
+
+@keyframes typing {
+  from { max-width: 0 }
+  to { max-width: var(--characters) }
+}
+
+@keyframes blink {
+  0%,100% { border-color: transparent }
+  50% { border-color: currentColor }
+}

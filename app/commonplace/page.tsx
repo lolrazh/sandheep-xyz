@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import { buildTitle, canonical, defaultOgImage } from '../../src/lib/seo'
 import Layout from '../../src/components/Layout'
 import { Separator } from '../../src/components/ui/separator'
+import { TypingHeading } from '@/components/TypingHeading'
 
 interface Link {
   title: string;
@@ -89,7 +90,9 @@ export default function CommonplacePage() {
   return (
     <Layout>
       <div className="mx-auto max-w-2xl py-10">
-        <h1 className="text-2xl md:text-3xl font-medium mb-10">Commonplace Book</h1>
+        <TypingHeading className="text-2xl md:text-3xl font-medium mb-10">
+          Commonplace Book
+        </TypingHeading>
         <div className="space-y-0">
           {links.map((link, index) => (
             <React.Fragment key={index}>
