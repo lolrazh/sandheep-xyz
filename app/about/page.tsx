@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { buildTitle, canonical, defaultDescription, defaultOgImage } from '../../src/lib/seo'
 import Layout from '../../src/components/Layout'
+import { TypingHeading } from '@/components/TypingHeading'
 
 export const metadata: Metadata = {
   title: buildTitle('About'),
@@ -35,7 +36,9 @@ export default function AboutPage() {
   return (
     <Layout>
       <div className="mx-auto max-w-3xl py-10">
-        <h1 className="text-2xl md:text-3xl font-medium mb-6">About Sandheep Rajkumar</h1>
+        <TypingHeading className="text-2xl md:text-3xl font-medium mb-6">
+          About Sandheep Rajkumar
+        </TypingHeading>
         <p className="text-base md:text-lg text-foreground/80">
           Work in progress. This page will contain information about me and my interests.
         </p>
