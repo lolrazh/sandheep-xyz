@@ -11,6 +11,10 @@ interface Link {
 
 const links: Link[] = [
   {
+    title: "Virgil Abloh, “Insert Complicated Title Here”",
+    url: "https://youtu.be/qie5VITX6eQ?si=0wcLsc4h6hUyVR6s"
+  },
+  {
     title: "Steve Jobs' 2005 Stanford Commencement Address",
     url: "https://youtu.be/UF8uR6Z6KLc?si=NZ33mTIRvYuhDOYw"
   },
