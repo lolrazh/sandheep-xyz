@@ -11,12 +11,16 @@ interface Link {
 
 const links: Link[] = [
   {
+    title: "The First Secret of Great Design | Tony Fadell",
+    url: "https://www.youtube.com/watch?v=9uOMectkCCs"
+  },
+  {
     title: "Virgil Abloh, “Insert Complicated Title Here”",
-    url: "https://youtu.be/qie5VITX6eQ?si=0wcLsc4h6hUyVR6s"
+    url: "https://www.youtube.com/watch?v=qie5VITX6eQ"
   },
   {
     title: "Steve Jobs' 2005 Stanford Commencement Address",
-    url: "https://youtu.be/UF8uR6Z6KLc?si=NZ33mTIRvYuhDOYw"
+    url: "https://www.youtube.com/watch?v=UF8uR6Z6KLc"
   },
   {
     title: "The Almanack of Naval Ravikant",
